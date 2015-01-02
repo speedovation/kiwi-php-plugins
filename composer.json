@@ -1,0 +1,34 @@
+{
+    "name": "speedovation/kiwi-php-plugins",
+    "type": "application",
+    "description": "KiWi PHP Plugins, Using sockets PHP based plugins",
+    "keywords": ["phpdoc"],
+    "homepage": "http://kineticwing.com",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "Yash B",
+            "email": "yash@speedovation.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "pimple/pimple": "~3.0",
+        "twig/twig": "~1.13",
+        "nikic/php-parser": "~1.0",
+        "michelf/php-markdown": "~1.3",
+        "symfony/console": "~2.1",
+        "symfony/finder": "~2.1",
+        "symfony/filesystem": "~2.1",
+        "symfony/yaml": "~2.1",
+        "symfony/process": "~2.1",
+        "phpdocumentor/reflection-docblock": "~2.0"
+    },
+    
+    "extra": {
+        "branch-alias": {
+            "dev-master": "dev"
+        }
+    }
+    
+}

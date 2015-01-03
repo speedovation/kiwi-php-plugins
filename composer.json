@@ -4,7 +4,7 @@
     "description": "KiWi PHP Plugins, Using sockets PHP based plugins",
     "keywords": ["phpdoc"],
     "homepage": "http://kineticwing.com",
-    "license": "Apache",
+    "license": "Apache 2.0 License",
     "authors": [
         {
             "name": "Yash B",
@@ -23,12 +23,6 @@
         "symfony/yaml": "~2.1",
         "symfony/process": "~2.1",
         "phpdocumentor/reflection-docblock": "~2.0"
-    },
-    
-    "extra": {
-        "branch-alias": {
-            "dev-master": "dev"
-        }
     }
     
 }

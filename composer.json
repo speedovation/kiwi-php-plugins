@@ -22,6 +22,7 @@
         "symfony/filesystem": "~2.1",
         "symfony/yaml": "~2.1",
         "symfony/process": "~2.1",
+        "andrewsville/php-token-reflection" : "~1.4.0",
         "phpdocumentor/reflection-docblock": "~2.0"
     }
     

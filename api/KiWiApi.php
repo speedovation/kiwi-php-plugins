@@ -64,7 +64,7 @@ class KiWiApi
     
     /**
     * Create and connect socket
-    *
+    * @param $debug
     * @access public
     * @since 1.0.0
     */
@@ -126,11 +126,13 @@ class KiWiApi
     * If IDE is directly calling then submit to socket just return JSON 
     *
     * @return string
+    * @param $name some details
+    * @param $args
     *
     * @access private
     * @since 1.0.0
     */
-    public function callApi($name, $args, $dispatch = TRUE, $return = TRUE)
+    public function callApi($name, array $args, $dispatch = TRUE, $return = TRUE)
     {
         
         $newArgs = [];

@@ -75,6 +75,18 @@ class KiWiApi
         
         $this->debug = $debug;
         
+        
+         
+        
+        
+/*        $factory = new \Socket\Raw\Factory();*/
+
+        //The createClient($address) method is the most 
+        //convenient method for creating connected client sockets 
+        //(similar to how fsockopen() or stream_socket_client() work).
+
+/*        $socket = $factory->createClient('tcp://www.google.com:80');*/
+        
         /*		$this->createSocket();
         $this->connectSocket();*/
     }
@@ -97,7 +109,7 @@ class KiWiApi
         }
         else
         {
-            echo "OK.\n";
+            echo "Socket created. OK.\n";
         }
         
     }
@@ -132,7 +144,7 @@ class KiWiApi
     * @access private
     * @since 1.0.0
     */
-    public function callApi($name, array $args, $dispatch = TRUE, $return = TRUE)
+    public function callApi($name, array $args, $dispatch = FALSE, $return = TRUE)
     {
         
         $newArgs = [];
@@ -152,14 +164,13 @@ class KiWiApi
         if($this->debug)
             print_r($b);
         
-        if(!$dispatch)
+        if($dispatch)
         {
             echo json_encode($b);
             return;
         }        
         
-        $this->createSocket();
-        $this->connectSocket();
+       
         
         
         $this->send($b);
@@ -178,22 +189,57 @@ class KiWiApi
     {
         $in = json_encode($input);
         
+        $in = str_replace(array("\n", "\r"), '', $in);
+        $in = trim(preg_replace('/\s+/', ' ', $in));
+        
         if($this->debug)
             print_r($in);
         
         echo "Sending HTTP HEAD request...";
         
-        socket_write($this->socket, $in, strlen($in));
+        //echo "length ".strlen($in);
+        //$g = socket_write($this->socket, $in, strlen($in));
+        
+/*        $g = socket_sendto ( $this->socket , $in , strlen($in) , MSG_EOF , $this->address, $this->port);*/
+        $this->sendall($in);
+        
+/*        echo "send length ".$g;*/
         
         echo "OK.\n";
         
         echo "Reading response:\n";
         
+       
         while ( $out = socket_read($this->socket, $this->port) )
         {
             echo $out;
         }
         
+    }
+    
+    private function sendall($input)
+    {
+        
+        $offset=0;
+        $length = strlen($input);
+    
+        
+     
+        do
+        {
+           $this->createSocket(); 
+        $this->connectSocket();
+             
+            echo "send length and offset ".$length." ".$offset;
+            
+            $offset += socket_sendto ( $this->socket , $input , $length - $offset , MSG_OOB , $this->address, $this->port);
+            
+            echo "after send length and offset ".$length." ".$offset;
+            
+    
+        } while($offset < $length);
+    
+        return $offset;
     }
     
     

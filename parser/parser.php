@@ -2,6 +2,8 @@
 
 namespace KiWi;
 
+use Symfony\Component\Finder\Finder;
+
 require ("../vendor/autoload.php");
 require '../api/KiWiApi.php';
 
@@ -37,16 +39,61 @@ class KiwiParser
 {
     private $broker;
     private $json;
+    private $finder;
     
     public function __construct()
     {
+        
+
+        $this->finder = new Finder();
         $this->broker = new \TokenReflection\Broker(new \TokenReflection\Broker\Backend\Memory());
         //$broker->processDirectory('/home/yash/Projects/qt/kiwi/Build/debug/resources/php/api');
     }
     
-    public function processDir($dirPath)
+    public function processDir($dirPath, $filters = [], $excludes = [])
     {
-        $this->broker->processDirectory($dirPath);
+       
+        $this->finder->in($dirPath)
+                    ->exclude($excludes['dirs'])
+                    ->ignoreVCS(false)
+                    ->ignoreUnreadableDirs()
+                    ->ignoreDotFiles(TRUE)
+                    ->name($filters['include'])
+                    ->notName($filters['exclude'])
+                    ;
+        
+        foreach($this->finder as $file)
+        {
+            
+            if(in_array($file,$excludes['files']))
+                continue;
+             
+            try
+            {      
+                $this->broker->processFile($file->getRealpath(), FALSE);
+            } 
+            catch (\TokenReflection\Exception\ParseException $e) 
+            {
+                echo "\nParse Error on".$file->getRealpath();
+            } 
+            catch (\TokenReflection\Exception\StreamException $e) 
+            {
+                echo "\nStream Error on".$file->getRealpath();
+            } 
+            catch (\TokenReflection\Exception\FileProcessingException $e) 
+            {
+                echo "\nFile Processing Error on".$file->getRealpath();
+                echo "\nMessage:".$e->getDetail()."\n";
+            } 
+            catch (\TokenReflection\Exception\BrokerException $e) {
+                echo "\nBrokerException Error on".$file->getRealpath();
+            }
+            
+        }
+        
+         
+        //$this->broker->processDirectory($dirPath);
+        
         return $this;
     }
     
@@ -79,8 +126,8 @@ class KiwiParser
             
             foreach ($methods as $method)
             {
-                echo $method->getName();
-                print_r( $method->getAnnotations() );
+                //echo $method->getName()."\n";
+                //print_r( $method->getAnnotations() );
                 
                 
                 $parameters = $method->getParameters();
@@ -118,6 +165,8 @@ class KiwiParser
             
         } 
         
+        //print_r($classesArr);
+        
         $this->json = json_encode($classesArr);     
         
         return $this;  
@@ -127,6 +176,8 @@ class KiwiParser
     {
         $api = new \KiWiApi(); 
         
+        echo "JSON".$this->json;
+        
         $api->callApi( 'updateAutocompleteModel', [$this->json] );
     }
 }
@@ -134,8 +185,17 @@ class KiwiParser
 
 //Calling this
 
-$parser = new KiwiParser();
-$parser->processDir('/home/yash/Projects/php/laravel/vendor/monolog/',["*.php"])
+    $parser = new KiwiParser();
+    /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
+    $parser->processDir('/home/yash/Projects/php/laravel',
+                        [
+                            "include"=>"*.php" , 
+                            "exclude" =>""
+                        ],
+                        [
+                            "files" => ["/home/yash/Projects/php/laravel/bootstrap/compiled.php"],
+                            "dirs" => ["/home/yash/Projects/php/laravel/bootstrap","*/test/*"]
+                        ])
        ->call()
        ->send();
 

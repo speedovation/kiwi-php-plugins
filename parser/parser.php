@@ -40,10 +40,11 @@ class KiwiParser
     private $broker;
     private $json;
     private $finder;
+    private $debug;
     
-    public function __construct()
+    public function __construct($debug = FALSE)
     {
-        
+        $this->debug = $debug;
 
         $this->finder = new Finder();
         $this->broker = new \TokenReflection\Broker(new \TokenReflection\Broker\Backend\Memory());
@@ -74,19 +75,26 @@ class KiwiParser
             } 
             catch (\TokenReflection\Exception\ParseException $e) 
             {
-                echo "\nParse Error on".$file->getRealpath();
+                if($this->debug)
+                    echo "\nParse Error on".$file->getRealpath();
             } 
             catch (\TokenReflection\Exception\StreamException $e) 
             {
-                echo "\nStream Error on".$file->getRealpath();
+                if($this->debug)
+                    echo "\nStream Error on".$file->getRealpath();
             } 
             catch (\TokenReflection\Exception\FileProcessingException $e) 
             {
-                echo "\nFile Processing Error on".$file->getRealpath();
-                echo "\nMessage:".$e->getDetail()."\n";
+                if($this->debug)
+                {
+                    echo "\nFile Processing Error on".$file->getRealpath();
+                    echo "\nMessage:".$e->getDetail()."\n";
+                }
             } 
-            catch (\TokenReflection\Exception\BrokerException $e) {
-                echo "\nBrokerException Error on".$file->getRealpath();
+            catch (\TokenReflection\Exception\BrokerException $e) 
+            {
+                if($this->debug)
+                    echo "\nBrokerException Error on".$file->getRealpath();
             }
             
         }
@@ -136,7 +144,7 @@ class KiwiParser
                 {
                     $parametersArr[$parameter->getName()] = [
                      
-                     "default" => ( $parameter->isDefaultValueAvailable( ) ?  $parameter->getDefaultValue() : '' ),
+                     "default" => ( $parameter->isDefaultValueAvailable( ) ? (string) $parameter->getDefaultValue() : '' ),
                      "isNull" => $parameter->allowsNull( ),	
                      "isOptional" => $parameter->isOptional( ),
                      "isPassedByReference" => $parameter->isPassedByReference( ),
@@ -168,7 +176,8 @@ class KiwiParser
         //print_r($classesArr);
         
         $this->json = json_encode($classesArr);     
-        
+        echo "\nERROR". json_last_error() ;
+        echo json_last_error_msg();
         return $this;  
     }
     
@@ -176,18 +185,25 @@ class KiwiParser
     {
         $api = new \KiWiApi(); 
         
-        echo "JSON".$this->json;
+        //echo "JSON".$this->json;
         
         $api->callApi( 'updateAutocompleteModel', [$this->json] );
     }
 }
 
-
+/*$directories = glob("/home/yash/Projects/php/laravel/vendor/patchwork/utf8/class/Patchwork/PHP/" . '/*' , GLOB_ONLYDIR);
 //Calling this
 
-    $parser = new KiwiParser();
+     foreach($directories as $dir)
+        {
+            */
+    
+             
+            
+
+    $parser = new KiwiParser(TRUE);
     /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
-    $parser->processDir('/home/yash/Projects/php/laravel',
+    $parser->processDir("/home/yash/Projects/php/laravel",
                         [
                             "include"=>"*.php" , 
                             "exclude" =>""
@@ -198,7 +214,11 @@ class KiwiParser
                         ])
        ->call()
        ->send();
-
+       
+/*       echo $dir."\n=======================================\n\n\n";
+       
+       }
+*/
 
 //$function = $broker->getFunction(...);
 //$constant = $broker->getConstant(...);

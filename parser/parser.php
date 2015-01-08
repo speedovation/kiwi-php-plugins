@@ -4,8 +4,8 @@ namespace KiWi;
 
 use Symfony\Component\Finder\Finder;
 
-require ("../vendor/autoload.php");
-require '../api/KiWiApi.php';
+require __DIR__."/../vendor/autoload.php";
+require __DIR__.'/../api/KiWiApi.php';
 
 
 
@@ -51,6 +51,40 @@ class KiwiParser
         //$broker->processDirectory('/home/yash/Projects/qt/kiwi/Build/debug/resources/php/api');
     }
     
+    public function processFile($filePath)
+    {
+        try
+            {      
+                $this->broker->processFile($filePath, FALSE);
+            } 
+            catch (\TokenReflection\Exception\ParseException $e) 
+            {
+                if($this->debug)
+                    echo "\nParse Error on".$filePath;
+            } 
+            catch (\TokenReflection\Exception\StreamException $e) 
+            {
+                if($this->debug)
+                    echo "\nStream Error on".$filePath;
+            } 
+            catch (\TokenReflection\Exception\FileProcessingException $e) 
+            {
+                if($this->debug)
+                {
+                    echo "\nFile Processing Error on".$filePath;
+                    echo "\nMessage:".$e->getDetail()."\n";
+                }
+            } 
+            catch (\TokenReflection\Exception\BrokerException $e) 
+            {
+                if($this->debug)
+                    echo "\nBrokerException Error on".$filePath;
+            }
+            
+            return $this;
+            
+    }
+    
     public function processDir($dirPath, $filters = [], $excludes = [])
     {
        
@@ -68,34 +102,8 @@ class KiwiParser
             
             if(in_array($file,$excludes['files']))
                 continue;
-             
-            try
-            {      
-                $this->broker->processFile($file->getRealpath(), FALSE);
-            } 
-            catch (\TokenReflection\Exception\ParseException $e) 
-            {
-                if($this->debug)
-                    echo "\nParse Error on".$file->getRealpath();
-            } 
-            catch (\TokenReflection\Exception\StreamException $e) 
-            {
-                if($this->debug)
-                    echo "\nStream Error on".$file->getRealpath();
-            } 
-            catch (\TokenReflection\Exception\FileProcessingException $e) 
-            {
-                if($this->debug)
-                {
-                    echo "\nFile Processing Error on".$file->getRealpath();
-                    echo "\nMessage:".$e->getDetail()."\n";
-                }
-            } 
-            catch (\TokenReflection\Exception\BrokerException $e) 
-            {
-                if($this->debug)
-                    echo "\nBrokerException Error on".$file->getRealpath();
-            }
+            
+                $this->processFile($file->getRealpath());    
             
         }
         
@@ -142,9 +150,14 @@ class KiwiParser
                 $parametersArr = [];
                 foreach ($parameters as $parameter)
                 {
+                    $val  = ( $parameter->isDefaultValueAvailable( ) ? $parameter->getDefaultValue() : '' );
+                    if(!is_array($val))
+                        $val = (string) $val;
+                    
                     $parametersArr[$parameter->getName()] = [
                      
-                     "default" => ( $parameter->isDefaultValueAvailable( ) ? (string) $parameter->getDefaultValue() : '' ),
+                     
+                     "default" => $val,
                      "isNull" => $parameter->allowsNull( ),	
                      "isOptional" => $parameter->isOptional( ),
                      "isPassedByReference" => $parameter->isPassedByReference( ),
@@ -176,8 +189,8 @@ class KiwiParser
         //print_r($classesArr);
         
         $this->json = json_encode($classesArr);     
-        echo "\nERROR". json_last_error() ;
-        echo json_last_error_msg();
+/*        echo "\nERROR". json_last_error() ;*/
+/*        echo json_last_error_msg();*/
         return $this;  
     }
     
@@ -185,7 +198,7 @@ class KiwiParser
     {
         $api = new \KiWiApi(); 
         
-        //echo "JSON".$this->json;
+        echo "\nJSON ".$this->json;
         
         $api->callApi( 'updateAutocompleteModel', [$this->json] );
     }
@@ -201,19 +214,7 @@ class KiwiParser
              
             
 
-    $parser = new KiwiParser(TRUE);
-    /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
-    $parser->processDir("/home/yash/Projects/php/laravel",
-                        [
-                            "include"=>"*.php" , 
-                            "exclude" =>""
-                        ],
-                        [
-                            "files" => ["/home/yash/Projects/php/laravel/bootstrap/compiled.php"],
-                            "dirs" => ["/home/yash/Projects/php/laravel/bootstrap","*/test/*"]
-                        ])
-       ->call()
-       ->send();
+
        
 /*       echo $dir."\n=======================================\n\n\n";
        

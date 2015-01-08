@@ -1,0 +1,6 @@
+{
+    "enabled" : true ,
+    "phpPluginsList" : "parser",
+    "ignoreList" : ""
+}
+    

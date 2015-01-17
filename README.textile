@@ -1,12 +1,13 @@
 h2. Kineticwing IDE Plugins using PHP
 
-Doc Version : 1.0 IDE Version 2.0.6
+Doc Version : 1.0 
+IDE Version : 2.0.6
 
-This enables us to write plugins in PHP for KineticWing IDE. We're using sockets for this purpose.
+Kiwi-php-plugins allows us to write plugins in PHP for KineticWing IDE. One can use any language to write plugins for KineticWing IDE using the flavours API. Here we are using PHP for that purpose.
 
-KiWiAPI.php contains API functions which lets us connect to IDE and send requests.
+KiWiAPI.php contains API functions which lets us connect to the IDE and send requests. The requests are used to provide extended functionality to the IDE and control some of its functions.
 
-We're using "json-rpc":http://json-rpc.org/ based protocols for API and IDE communications.
+We're using "json-rpc":http://json-rpc.org/ based protocol for API and IDE communications. Its named 'flavours'.
 
 KiWiExample.php contains few examples to show us how to use the API.
 

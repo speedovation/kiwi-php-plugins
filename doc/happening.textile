@@ -1,0 +1,179 @@
+h1. KineticWing IDE
+
+Last update :  18 JAN 2014
+
+*Version ( 2.0.7 Private Beta)*
+
+http://kineticwing.com and get your preview version now. 
+
+*We are in heavy development and will change your world by saving lots of precious time which you can share with family and friends.*
+
+*Please support us.* Visit website and do support us. _We are free and always will be._  
+
+h1. We are doing ( Headlines only)
+
+Next Major Items
+
+h1. 
+* PHP parser plugin
+* PHP API
+
+
+h2. 
+*   Python based plugins
+*   FTP python plugin
+*  Fixing below items
+
+h2. Minor and Major known issues or Features
+
+*  Parsing
+*  Lazy loading in autocomplete
+*  Auto close of tags is must to have features
+*  Find after replacing set position to unknown location try to set in same line
+*  nbsp and others missing symbol in html
+*  comment line and move to front of line
+*  file browser opens file when can't focus opened files
+*  Popup enter # opens popup why? it should not
+*  Detect project type during drag and drop
+*  Hide popup if line changes or under word changes rem last word
+*  Home or End hide autocompletes and do action for key
+*  empty last autocomplete for new file (untitled file)
+*  FLAVOURS are not stable WHY WHY make them
+*  WHY save opens unknown location ..open project location or last file saved location
+*  Autocomplete path in url of css
+*  if you know file type and user miss it do append it
+
+h2. Fixed Items
+
+Recently Fixed Items
+*  Hide close icon on Tab and Explorer only visible when required i.e. on mouse rollover
+*  Sidewidgets now saves and restore windows and selected view.
+*  Backspace problem count multiple of 4 and start deleting from right side
+*  save when pop up is on
+*  don't complete { with popup and auto close
+*  RELOAD file manager
+*  rename should be added to top or workspace
+*  open/click on deleted files on welcome screen and no menage will pop during opening. Tell file not found and want to remove from session? if yes remove else leave
+*  Save session button and automatically save session on opening and closing of files
+*  set session as current one on creating new session
+*  can be done but there will performance hit if untitled or saved session file is unchanged don't ask to save again
+*  add and should not be a performance hit
+*  Format HTML Braces
+*  TAB auto-completion
+*  Php keywords are missing
+*  Replace is not working
+*  MOVE line cursor should be at first position and not last
+*  ( autocomplete not working in python
+*  python keyword needs space we need regex expression to override this
+*  TAB behaviors problem: when at starting of line press tab above line last word autocompletes
+*  double click selecting symbols won't work
+*  triple click never selects line
+*  autocomplete needs space left-side which is undesired in any case..only consider right side
+* use icon button for wrkexplore..prjt exlr …
+* cut mini size of side explorer
+* opening show untitled name log
+* log flash messages
+* if window is not focus ..stop flash message untill it get focus..then start flash message
+* as usual refresh is not working properly
+* not asking for saving..file or untiled files
+* not asking for saving..file or untiled files
+* global debug constant
+* hide message if false else show…
+* set it as enum with various verbose values ..
+* loggingg.info Logs a message with level INFO on the root logger.
+* logging.warning Logs a message with level WARNING on the root logger.
+* logging.error Logs a message with level ERROR on the root logger.
+* logging.critical Logs a message with level CRITICAL on the root logger.
+* logging.exception Logs a message with level ERROR on the root logger.
+* Exception info is added to the logging message. This function should only be called from an exception handler.
+* multi lang codec support 
+* Tab setting 4 …Not picked
+* double click on tabbar open new plain file
+* Word in all editor should come up for autocomplete
+* logging.log
+* don’t close even we left word
+* Save or any other shortcut won’t work
+* shift tab looses cursor position
+* middle click to close tab
+* Qt based C++ Json Library to write and understand json with ease
+
+BUGs Fixed
+* comment bug
+* line copy down bug ..moving to next line
+* if session contains a untitled 0 and create a new untitled 0 ...no doff on explorer
+* solution if we load untitled simply increment untitled counter
+* shortcuts for views..like explorer
+* make tab changing easier
+* Session manager
+* save session
+* auto saving session timer
+* save session whenever a new file close n open..instead in the last doing
+* save session while working wit a interval or manual like auto backup
+* save untitled files into session
+* give some internal name /id for untitled files
+* use in qsyn.. and in sessions
+* if open without any session use n create a anon session
+* Temp session for storing files without any session
+* as usual refresh is not working properly
+* highlight word under cursor
+* SPLITING of views : vertical | horizontal
+* check next character ..
+* if same as typed ..do noting move one cursor next
+* if any charcter ..dnt call autocomplete
+* bookmark should work across all opened files 
+* on autocompletelist ..trigger save
+* create new file..in folder and open it ..missing
+* add corner widget for showing/hiding widgets and hide toolbar to make it look modern n slick
+* Mac support improved
+* Reported issues/tasks
+* Finished
+* case sensitive
+* if File not found
+* remove from DB and refresh db list
+* Create new session and refresh list
+* end of autolist move to top n vice versa
+* Why ok is so slow? remove waste
+* remove txt icon except with txt
+* when full distraction mode
+* hide statusbar
+* hide linenumbers
+* Addwatch : check for path existence
+* possible bug in independent files…with project wrking nice
+* Open current..open find ..search and close it …hide current and show it again..now type…BOOM
+* message whether find or not in dialog
+* when dialog is visible use arrow keys to move up and down
+* sh script for creating and pushing releases
+* less problems.. download all less libraries and
+* test those
+* less value semicolon
+* variables in mixins
+* addcolor in same line for 2 colors…bug
+* just create release binary and copy
+* webmaster…google analytics
+* nested selectors r nt showing ..working inline ..try to check in newline as well
+* variable ending is not checking for any selectors … after finishing variable check for selectors …when variable declaration * lies in properties section
+* variable declaration is not working as per expectation
+* string not highlighting
+* highlighting colors are not working as per expectation
+* backquote string ..make it work
+* zoom menu shortcuts
+* ctrl + tab
+* layout management = rem last showed/hide widgets
+* opened project file...stop reopening ....
+* if distraction mode is on and esc is pressed ..respond to that
+* if File not found
+* remove from DB and refresh db list
+* Create new session and refresh list
+* end of autolist move to top n vice versa
+* Why ok is so slow? remove waste
+* if there no bookmarks and navigation happens…Boom…
+* vaccum pragma vaccum is required like cleanup for size
+* 13363895  ==  23322622 nodal officer ...   
+* GOTO Line
+* if flavour menu contains only one action just make action n no menu
+* print is not working..either disable it /hide it..or make it working
+* rem layout = left / log / welcome / size / position / menu / tabbar / toolbar
+* liboverllay problem static
+* json highlighter is not working..showing all green even after string termination
+* add qss file type and add new button
+* theme showing missing checkboxes..add images in resource file

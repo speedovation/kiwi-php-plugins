@@ -1,0 +1,65 @@
+h2. Sample Format
+
+pre. {
+        "name": "PhpParser",
+	"title": "PHP Parser",
+	"description": "Php Parser for web developers",
+	"version": "1.0.0",
+	"parentMenu": "menuPhp",
+	"menuName": "Php Parser",
+	"actions": [
+		{
+		"name": "parsePhp",
+		"title": "Parse Php",
+		"parentMenu": "menuPhp",
+		"shortcutKeys": "",
+		"type": "php",
+		"functionName" : "parser.interface.parsePhp",
+		"icons": {}
+		},
+		{
+		"name": "parsePhpProject",
+		"title": "Parse Project",
+		"parentMenu": "menuPhp",
+		"shortcutKeys": "",
+		"type": "php",
+		"functionName" : "parser.interface.parsePhpProject",
+		"icons": {}
+		}
+	]
+    ,
+    "files" : {
+        "php" : ["interface"]    
+    }
+    , 
+     "icons": {
+	"128": "jsonlint-logo.png"
+	},
+	"license": "Apache"
+ }
+
+h2. Explaining above terms
+
+* name : Plugin name
+* title : Plugin title
+* description : Plugin description must be brief
+* version: Plugin version
+* parentMenu: Should be "menuPhp" if plugin is in php
+
+** menuName: Plugin menu name which comes   
+***  actions: 
+**** "name: functionname in php file which be called on this action
+**** title: Internal title 
+**** parentMenu: menuPhp is default and should be mention in file.
+**** shortcutKeys: Shortcut keys for this action 
+**** type: php if lang is php
+**** functionName :  Its function path. Its similar to python import like. Example  "parser.interface.parsePhpProject" where parser is directory inside plugins and interface is php file which contains parserPhpProject function. It under progress work. 
+**** icons: Icon appear in menu		
+**** --
+**** We can more functions in similar way
+*** files  
+**** php:  it start with php if plugins is in php and contains just filename in json array format.   
+ 
+*** icons: It contains icons
+**** size: filename ( Full path of file relative to resources path) 
+*** license: Opensource licenses like Apache, MIT, BSD etc

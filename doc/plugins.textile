@@ -29,9 +29,9 @@ pre. {
 	]
     ,
     "files" : {
-        "php" : ["interface"]    
+        "php" : ["interface"]
     }
-    , 
+    ,
      "icons": {
 	"128": "jsonlint-logo.png"
 	},
@@ -46,20 +46,21 @@ h2. Explaining above terms
 * version: Plugin version
 * parentMenu: Should be "menuPhp" if plugin is in php
 
-** menuName: Plugin menu name which comes   
-***  actions: 
-**** "name: functionname in php file which be called on this action
-**** title: Internal title 
+** menuName: Plugin menu name which comes flavours menu.
+It will add action if we have single action inside actions else it will add menu with all action under that menu.
+***  actions:
+**** name: functionname in php file which be called on this action
+**** title: Internal title
 **** parentMenu: menuPhp is default and should be mention in file.
-**** shortcutKeys: Shortcut keys for this action 
+**** shortcutKeys: Shortcut keys for this action
 **** type: php if lang is php
-**** functionName :  Its function path. Its similar to python import like. Example  "parser.interface.parsePhpProject" where parser is directory inside plugins and interface is php file which contains parserPhpProject function. It under progress work. 
-**** icons: Icon appear in menu		
+**** functionName :  Its function path. Its similar to python import like. Example  "parser.interface.parsePhpProject" where parser is directory inside plugins and interface is php file which contains parserPhpProject function. It under progress work.
+**** icons: Icon appear in menu
 **** --
-**** We can more functions in similar way
-*** files  
-**** php:  it start with php if plugins is in php and contains just filename in json array format.   
- 
+**** We can add more actions in similar way
+*** files: Normally we don't need to add anything here. We deprecate this.
+**** php: It start with php if plugins is in php and contains just filename in json array format.
+
 *** icons: It contains icons
-**** size: filename ( Full path of file relative to resources path) 
+**** size: filename ( Full path of file relative to resources path)
 *** license: Opensource licenses like Apache, MIT, BSD etc

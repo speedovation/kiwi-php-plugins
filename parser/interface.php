@@ -13,7 +13,7 @@ function parsePhp()
     $parser = new \KiWi\KiwiParser(TRUE);
     /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
 
-    $parser->processFile("/home/yash/Projects/qt/kiwi/Build/debug/resources/php/parser/parser.php")                 
+    $parser->processFile("/var/www/html/kiwi/app/controllers/HomeController.php")                 
        ->call()
        ->send();
 }

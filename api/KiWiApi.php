@@ -59,7 +59,8 @@ class KiWiApi
     */
     protected $options = 0;
     
-    private $debug = FALSE;
+    private $PRINT_DEBUG;
+    private $PRINT_INFO;
     
     
     /**
@@ -68,24 +69,13 @@ class KiWiApi
     * @access public
     * @since 1.0.0
     */
-    public function __construct($debug = FALSE)
+    public function __construct($info = TRUE,$debug = FALSE)
     {
         // No Timeout
         set_time_limit(0);
         
-        $this->debug = $debug;
-        
-        
-         
-        
-        
-/*        $factory = new \Socket\Raw\Factory();*/
-
-        //The createClient($address) method is the most 
-        //convenient method for creating connected client sockets 
-        //(similar to how fsockopen() or stream_socket_client() work).
-
-/*        $socket = $factory->createClient('tcp://www.google.com:80');*/
+        $this->PRINT_DEBUG = $debug;
+        $this->PRINT_INFO = $info;
         
         /*		$this->createSocket();
         $this->connectSocket();*/
@@ -93,8 +83,12 @@ class KiWiApi
     
     function __destruct()
     {
+        if($this->PRINT_INFO)
         echo "Closing socket...";
+        
         socket_close($this->socket);
+        
+        if($this->PRINT_INFO)
         echo "OK.\n\n";
     }
     
@@ -105,29 +99,36 @@ class KiWiApi
         $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         if ($this->socket === false)
         {
+            
+            if($this->PRINT_INFO)
             echo "socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n";
         }
         else
         {
-            echo "Socket created. OK.\n";
+            if($this->PRINT_INFO)
+            echo "OK.\n";
         }
         
     }
     
     private function connectSocket()
     {
-        
+        if($this->PRINT_INFO)
         echo "Attempting to connect to '$this->address' on port '$this->port'...";
+        
         $result = socket_connect($this->socket, $this->address, $this->port);
         
         if ($result === false)
         {
+            if($this->PRINT_INFO)
             echo "socket_connect() failed.\nReason: ($result) "
             . socket_strerror(socket_last_error($this->socket)) . "\n";
         }
         else
         {
+            if($this->PRINT_INFO)
             echo "OK.\n";
+            
         }
     }
     
@@ -135,7 +136,7 @@ class KiWiApi
     /**
     * Create array in proper and required format and sends it to IDE
     *
-    * If IDE is directly calling then submit to socket just return JSON 
+    * If IDE is directly calling then submit to socket just return JSON
     *
     * @return string
     * @param $name some details
@@ -156,21 +157,21 @@ class KiWiApi
         
         
         $b = [
-            "name"   => $name,
-            "args"   => $newArgs,
-            "return" => $return,
+        "name"   => $name,
+        "args"   => $newArgs,
+        "return" => $return,
         ];
         
-        if($this->debug)
-            print_r($b);
+        if($this->PRINT_DEBUG)
+        print_r($b);
         
         if($dispatch)
         {
             echo json_encode($b);
             return;
-        }        
+        }
         
-       
+        
         
         
         $this->send($b);
@@ -183,36 +184,26 @@ class KiWiApi
     *
     * @access private
     * @since 1.0.0
-    * 
     */
     private function send($input)
     {
         $in = json_encode($input);
         
-        $in = str_replace(array("\n", "\r"), '', $in);
-        $in = trim(preg_replace('/\s+/', ' ', $in));
+        if($this->PRINT_DEBUG)
+        print_r($in);
         
-        if($this->debug)
-            print_r($in);
-        
+        if($this->PRINT_INFO)
         echo "Sending HTTP HEAD request...";
         
         //echo "length ".strlen($in);
         //$g = socket_write($this->socket, $in, strlen($in));
         
-/*        $g = socket_sendto ( $this->socket , $in , strlen($in) , MSG_EOF , $this->address, $this->port);*/
+        /*        $g = socket_sendto ( $this->socket , $in , strlen($in) , MSG_EOF , $this->address, $this->port);*/
         $this->sendall($in);
         
-/*        echo "send length ".$g;*/
-        
-        echo "OK.\n";
-        
-        echo "Reading response:\n";
-        
-       
         while ( $out = socket_read($this->socket, $this->port) )
         {
-            echo $out;
+            return $out;
         }
         
     }
@@ -222,23 +213,22 @@ class KiWiApi
         
         $offset=0;
         $length = strlen($input);
-    
         
-     
+        
         do
         {
-           $this->createSocket(); 
-        $this->connectSocket();
-             
+            $this->createSocket();
+            $this->connectSocket();
+            
             echo "send length and offset ".$length." ".$offset;
             
             $offset += socket_sendto ( $this->socket , $input , $length - $offset , MSG_OOB , $this->address, $this->port);
             
             echo "after send length and offset ".$length." ".$offset;
             
-    
+            
         } while($offset < $length);
-    
+        
         return $offset;
     }
     

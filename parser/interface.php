@@ -37,5 +37,3 @@ function parsePhpProject()
        ->call()
        ->send();
 }
-
-?>

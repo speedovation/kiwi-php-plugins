@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WebSocket\\' => array($vendorDir . '/textalk/websocket/lib'),
     'Socket\\Raw\\' => array($vendorDir . '/clue/socket-raw/src'),
 );

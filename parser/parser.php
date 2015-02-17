@@ -196,11 +196,18 @@ class KiwiParser
     
     public function send()
     {
-        $api = new \KiWiApi(); 
+        //$api = new \KiWiApi(); 
+        
+        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+		
+		$request = $connection->sendRequest('updateAutocompleteModel', [$this->json]);
+		/*$request = $connection->sendRequest('showFlash', ["Some FLASH"]);*/
+
+
         
         echo "\nJSON ".$this->json;
         
-        $api->callApi( 'updateAutocompleteModel', [$this->json] );
+        //$api->callApi( 'updateAutocompleteModel', [$this->json] );
     }
 }
 

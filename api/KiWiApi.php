@@ -157,8 +157,9 @@ class KiWiApi
         
         
         $b = [
-        "name"   => $name,
-        "args"   => $newArgs,
+        "id"       => "81093c7a-8093-4303-a15a-fd97b863164c",
+        "method"   => $name,
+        "params"   => $newArgs,
         "return" => $return,
         ];
         

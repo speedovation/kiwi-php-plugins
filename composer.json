@@ -24,7 +24,8 @@
         "symfony/process": "~2.1",
         "speedovation/php-token-reflection" : "~1.4.0",
         "clue/socket-raw": "~1.1",
-        "phpdocumentor/reflection-docblock": "~2.0"
+        "phpdocumentor/reflection-docblock": "~2.0",
+        "tivoka/tivoka":"*"
     }
     
 }

@@ -1,7 +1,6 @@
-h1. Kineticwing IDE Plugins using PHP
+"!https://img.shields.io/badge/GitterChat-Online-brightgreen.svg?style=flat-square!":https://gitter.im/speedovation/General "!https://img.shields.io/badge/HipChat-Online-brightgreen.svg?style=flat-square!":https://www.hipchat.com/ggaNhaRfU  "!http://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square!":http://opensource.org/licenses/Apache-2.0 "!https://img.shields.io/badge/Current%20Version-2.0.7-47C9DE.svg?style=flat-square!":http://kineticwing.com
 
-^Doc Version : 1.0^
-^IDE Version : 2.0.6^
+h1. Kineticwing IDE Plugins using PHP
 
 
 h2. Introduction

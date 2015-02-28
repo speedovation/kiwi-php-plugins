@@ -24,7 +24,10 @@
 		"functionName" : "parser.interface.parsePhpProject",
 		"icons": {}
 		}
-	]
+	],
+	"events" : {
+		"signalname" : "phpfunctionname"
+	}
     ,
     "files" : {
         "php" : ["interface"]

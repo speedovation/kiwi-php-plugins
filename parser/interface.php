@@ -47,3 +47,20 @@ function parsePhpProject()
        ->call()
        ->send();
 }
+
+
+  function send()
+    {
+        //$api = new \KiWiApi(); 
+        
+        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+		
+		$request = $connection->sendRequest('ok_cancel_dialog', ['MAyon is Sweet']);
+		/*$request = $connection->sendRequest('showFlash', ["Some FLASH"]);*/
+
+
+        
+        echo "\nJSON ".$request->result;
+        
+        //$api->callApi( 'updateAutocompleteModel', [$this->json] );
+    }

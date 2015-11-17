@@ -54,9 +54,12 @@ function parsePhpProject()
         //$api = new \KiWiApi(); 
         
         $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+		$connection->setTimeout(60);
 		
-		$request = $connection->sendRequest('ok_cancel_dialog', ['MAyon is Sweet']);
-		/*$request = $connection->sendRequest('showFlash', ["Some FLASH"]);*/
+		//$request = $connection->sendRequest('status_message', ['Limit Message',30]);
+		
+		//$request = $connection->sendRequest('flash_message', ["Archana Some FLASH"]);
+		$request = $connection->sendRequest('open_untitled', ["Python File","var i = 0"]);
 
 
         

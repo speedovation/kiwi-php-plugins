@@ -59,8 +59,14 @@ function parsePhpProject()
 		//$request = $connection->sendRequest('status_message', ['Limit Message',30]);
 		
 		//$request = $connection->sendRequest('flash_message', ["Archana Some FLASH"]);
-		$request = $connection->sendRequest('open_untitled', ["Python File","var i = 0"]);
+		//$request = $connection->sendRequest('open_untitled', ["Python File","var i = 0"]);
+		
+		//$request = $connection->sendRequest('arch', []);
+		
+		
 
+		$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+		
 
         
         echo "\nJSON ".$request->result;

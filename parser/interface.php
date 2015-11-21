@@ -65,7 +65,15 @@ function parsePhpProject()
 		
 		
 
-		$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+		//$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+		
+		$request = $connection->sendRequest('register_event_type', ['Php File','text_changed','php interface.php cool']);
+		
+		#$request = $connection->sendRequest('register_event_pattern', ['.php,.php5','text_changed','php interface.php cool']);
+		
+		#$request = $connection->sendRequest('register_event_path', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+		
+		
 		
 
         

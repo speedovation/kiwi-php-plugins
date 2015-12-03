@@ -51,33 +51,44 @@ function parsePhpProject()
 
   function send()
     {
-        //$api = new \KiWiApi(); 
+        //$api = new \KiWiApi();
         
-        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
-		$connection->setTimeout(60);
-		
-		//$request = $connection->sendRequest('status_message', ['Limit Message',30]);
-		
-		//$request = $connection->sendRequest('flash_message', ["Archana Some FLASH"]);
-		//$request = $connection->sendRequest('open_untitled', ["Python File","var i = 0"]);
-		
-		//$request = $connection->sendRequest('arch', []);
-		
-		
-
-		//$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
-		
-		$request = $connection->sendRequest('register_event_type', ['Php File','text_changed','php interface.php cool']);
-		
-		#$request = $connection->sendRequest('register_event_pattern', ['.php,.php5','text_changed','php interface.php cool']);
-		
-		#$request = $connection->sendRequest('register_event_path', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
-		
-		
-		
-
+        try{ 
         
-        echo "\nJSON ".$request->result;
+			$connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+			$connection->setTimeout(60);
+			
+			//$request = $connection->sendRequest('status_message', ['Limit Message',30]);
+			
+			//$request = $connection->sendRequest('flash_message', ["Archana Some FLASH"]);
+			//$request = $connection->sendRequest('open_untitled', ["Python File","var i = 0"]);
+			
+			//$request = $connection->sendRequest('arch', []);
+			
+			
+
+			//$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+			
+			$request = $connection->sendRequest('register_event_type', ['type' => 'Php File', 
+																		'signal' => 'text_changed', 
+																		'command' => 'php interface.php cool'
+																		]);
+			
+			#$request = $connection->sendRequest('register_event_pattern', ['.php,.php5','text_changed','php interface.php cool']);
+			
+			#$request = $connection->sendRequest('register_event_path', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
+			
+			
+			
+
+			
+			echo "\nJSON ".$request->result;
+        
+		}
+		catch (Tivoka\Exception\ConnectionException $e)
+		{
+			echo "\nIDE is not running\n\n;
+		}
         
         //$api->callApi( 'updateAutocompleteModel', [$this->json] );
     }

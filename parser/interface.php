@@ -87,7 +87,7 @@ function parsePhpProject()
 		}
 		catch (Tivoka\Exception\ConnectionException $e)
 		{
-			echo "\nIDE is not running\n\n;
+			echo "\nIDE is not running\n\n";
 		}
         
         //$api->callApi( 'updateAutocompleteModel', [$this->json] );

@@ -69,12 +69,25 @@ function parsePhpProject()
 
 			//$request = $connection->sendRequest('register_event', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
 			
-			$request = $connection->sendRequest('register_event_type', ['type' => 'Php File', 
-																		'signal' => 'text_changed', 
-																		'command' => 'php interface.php cool'
+			$request1 = Tivoka\Client::request('register_event_type', ['1_type' => 'Php File', 
+																		'2_signal' => 'on_text_changed', 
+																		'3_command' => 'php interface.php cool',
+																		'4_location' => 'CurrentTab'
+																		]);
+																		
+																		
+			$request2 = Tivoka\Client::request('register_event_type', ['1_type' => 'Php File', 
+																		'2_signal' => 'on_text_changed', 
+																		'3_command' => 'php interface.php some',
+																		'4_location' => 'CurrentTab'
 																		]);
 			
-			#$request = $connection->sendRequest('register_event_pattern', ['.php,.php5','text_changed','php interface.php cool']);
+			$request3 = Tivoka\Client::request('register_event_pattern', ['.php,.php5','on_text_changed','php interface.php tuk'],  'CurrentTab');
+			
+			#$connection->send($request1 , $request2, $request3);
+			
+			$connection->send( $request2 );
+			
 			
 			#$request = $connection->sendRequest('register_event_path', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);
 			
@@ -82,7 +95,7 @@ function parsePhpProject()
 			
 
 			
-			echo "\nJSON ".$request->result;
+			#echo "\nJSON ".$request->result;
         
 		}
 		catch (Tivoka\Exception\ConnectionException $e)

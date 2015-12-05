@@ -71,18 +71,16 @@ function parsePhpProject()
 			
 			$request1 = Tivoka\Client::request('register_event_type', ['1_type' => 'Php File', 
 																		'2_signal' => 'on_text_changed', 
-																		'3_command' => 'php interface.php cool',
-																		'4_location' => 'CurrentTab'
+																		'3_command' => 'php interface.php cool'
 																		]);
 																		
 																		
 			$request2 = Tivoka\Client::request('register_event_type', ['1_type' => 'Php File', 
 																		'2_signal' => 'on_text_changed', 
-																		'3_command' => 'php interface.php some',
-																		'4_location' => 'CurrentTab'
+																		'3_command' => 'php interface.php some'
 																		]);
 			
-			$request3 = Tivoka\Client::request('register_event_pattern', ['.php,.php5','on_text_changed','php interface.php tuk'],  'CurrentTab');
+			$request3 = Tivoka\Client::request('register_event_pattern', ['.php,.php5','on_text_changed','php interface.php tuk']);
 			
 			#$connection->send($request1 , $request2, $request3);
 			

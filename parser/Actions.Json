@@ -25,8 +25,12 @@
 		"icons": {}
 		}
 	],
+	
 	"events" : {
-		"signalname" : "phpfunctionname"
+		
+    		"register_event_pattern" : "php:php5,on_text_changed,php interface.php tuk",
+    		"register_event_type" : "Php File,on_text_changed,php interface.php some"
+		
 	}
     ,
     "files" : {

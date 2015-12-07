@@ -10,11 +10,6 @@ return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'TokenReflection' => array($vendorDir . '/speedovation/php-token-reflection'),
     'Tivoka' => array($vendorDir . '/tivoka/tivoka/lib'),
-    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
-    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
-    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
-    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
 );

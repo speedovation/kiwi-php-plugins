@@ -70,7 +70,7 @@ class Client extends Base {
 
     // Default headers (using lowercase for simpler array_merge below).
     $headers = array(
-      'host'                  => $host,
+      'host'                  => $host . ":" . $port,
       'user-agent'            => 'websocket-client-php',
       'connection'            => 'Upgrade',
       'upgrade'               => 'websocket',
@@ -115,7 +115,7 @@ class Client extends Base {
 
     // Validate response.
     if (!preg_match('#Sec-WebSocket-Accept:\s(.*)$#mUi', $response, $matches)) {
-      $address = $scheme . '://' . $host . '/' . $path_with_query;
+      $address = $scheme . '://' . $host . $path_with_query;
       throw new ConnectionException(
         "Connection to '{$address}' failed: Server sent invalid upgrade response:\n"
         . $response

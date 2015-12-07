@@ -26,8 +26,8 @@
 	
 	"events" : {
 		
-    		"register_event_pattern" : "php:php5,on_text_changed,php interface.php tuk",
-    		"register_event_type" : "Php File,on_text_changed,php interface.php some"
+    		"register_event_pattern" : "dot:not,on_text_changed,php interface.php tuk",
+    		"register_event_type" : "Php File,on_text_changed,php parser/interface.php parsePhp"
 		
 	}
     ,

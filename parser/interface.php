@@ -19,7 +19,7 @@ function parsePhp()
 
 	
 	
-    $request = $connection->sendRequest('filepath', []);
+    $request = $connection->sendRequest('file_path', []);
     echo "Result:".$request->result;
     
     //"/var/www/html/kiwi/app/controllers/HomeController.php"

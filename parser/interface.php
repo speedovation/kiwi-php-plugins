@@ -80,11 +80,11 @@ function parsePhpProject()
 																		'3_command' => 'php interface.php some'
 																		]);
 			
-			$request3 = Tivoka\Client::request('register_event_pattern', ['.php,.php5','on_text_changed','php interface.php tuk']);
+			$request3 = Tivoka\Client::request('register_event_pattern', ['php,php5','on_text_changed','php interface.php tuk']);
 			
 			#$connection->send($request1 , $request2, $request3);
 			
-			$connection->send( $request2 );
+			$connection->send( $request3 );
 			
 			
 			#$request = $connection->sendRequest('register_event_path', ['/home/yash/Projects/kiwi/Build/Debug/resources/snippets/html/base/html','text_changed','php interface.php cool']);

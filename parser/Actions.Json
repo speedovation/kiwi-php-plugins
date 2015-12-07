@@ -11,8 +11,7 @@
 		"title": "Parse Php",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"type": "php",
-		"functionName" : "parser.interface.parsePhp",
+		"command" : "php parser/interface.php parsePhp",
 		"icons": {}
 		},
 		{
@@ -20,8 +19,7 @@
 		"title": "Parse Project",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"type": "php",
-		"functionName" : "parser.interface.parsePhpProject",
+		"command" : "php parser/interface.php parsePhpProject",
 		"icons": {}
 		}
 	],

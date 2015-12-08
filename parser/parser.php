@@ -113,6 +113,11 @@ class KiwiParser
         return $this;
     }
     
+    public function arc()
+    {
+        //
+    }
+    
     public function call()
     {
 

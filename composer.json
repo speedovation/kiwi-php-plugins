@@ -26,7 +26,8 @@
         "clue/socket-raw": "~1.1",
         "phpdocumentor/reflection-docblock": "~2.0",
         "tivoka/tivoka":"*",
-        "graze/guzzle-jsonrpc": "~3.0"
+        "graze/guzzle-jsonrpc": "~3.0",
+        "qafoolabs/php-refactoring-browser": "^0.1.0"
     }
     
 }

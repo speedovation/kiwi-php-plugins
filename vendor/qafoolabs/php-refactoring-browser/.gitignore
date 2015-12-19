@@ -1,0 +1,10 @@
+vendor
+refactor.phar
+.abc
+.pear
+build/
+composer.phar
+
+/php-refactoring-browser.sublime-project
+
+/php-refactoring-browser.sublime-workspace

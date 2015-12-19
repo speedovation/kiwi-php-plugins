@@ -1,0 +1,68 @@
+{
+	"name": "PhpRefactoring",
+	"title": "PHP Refactoring",
+	"description": "Php Refactoring for web developers",
+	"version": "1.0.0",
+	"parentMenu": "menuPhpRefactor",
+	"menuName": "Php Refactor",
+	"actions": [
+		{
+		"name": "extractMethodPhp",
+		"title": "Extract Method",
+		"parentMenu": "menuPhpRefactor",
+		"shortcutKeys": "",
+		"command" : "php refactor.phar extract-method <file> <line-range> <new-method>",
+		"icons": {}
+		},
+		{
+		"name": "renameLocalVariablePhp",
+		"title": "Rename Local Variable",
+		"parentMenu": "menuPhpRefactor",
+		"shortcutKeys": "",
+		"command" : "php refactor.phar rename-local-variable <file> <line> <old-name> <new-name>",
+		"icons": {}
+		},
+		{
+		"name": "convertLocaltoInstanceVariablePhp",
+		"title": "Convert Local to Instance Variable",
+		"parentMenu": "menuPhpRefactor",
+		"shortcutKeys": "",
+		"command" : "php refactor.phar convert-local-to-instance-variable <file> <line> <variable>",
+		"icons": {}
+		},
+		{
+		"name": "RenameClassandNamespacesPhp",
+		"title": "Rename Class and Namespaces",
+		"parentMenu": "menuPhpRefactor",
+		"shortcutKeys": "",
+		"command" : "php refactor.phar fix-class-names <dir>",
+		"icons": {}
+		},
+		{
+		"name": "OptimizeUseStatementsPhp",
+		"title": "Optimize use statements",
+		"parentMenu": "menuPhpRefactor",
+		"shortcutKeys": "",
+		"command" : "php refactor.phar optimize-use <file>",
+		"icons": {}
+		}
+	],
+	
+	"events" : {
+		
+    		"register_event_pattern" : "dot:not,on_text_changed,php interface.php tuk",
+    		"register_event_type" : "Php File,on_text_changed,php parser/interface.php parsePhp"
+		
+	}
+    ,
+    "files" : {
+        "php" : ["interface"]
+    
+    }
+    , 
+
+	"icons": {
+	"128": "jsonlint-logo.png"
+	},
+	"license": "Apache"
+}

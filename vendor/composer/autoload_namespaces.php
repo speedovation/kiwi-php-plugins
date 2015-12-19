@@ -8,8 +8,14 @@ $baseDir = dirname($vendorDir);
 return array(
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'TokenReflection' => array($vendorDir . '/speedovation/php-token-reflection'),
+    'TomPHP\\PatchBuilder\\' => array($vendorDir . '/tomphp/patch-builder/src'),
+    'TokenReflection' => array($vendorDir . '/speedovation/php-token-reflection', $vendorDir . '/andrewsville/php-token-reflection'),
     'Tivoka' => array($vendorDir . '/tivoka/tivoka/lib'),
+    'QafooLabs\\Refactoring' => array($vendorDir . '/qafoolabs/php-refactoring-browser/src/main'),
+    'QafooLabs\\Patches' => array($vendorDir . '/qafoolabs/php-refactoring-browser/src/main'),
+    'QafooLabs\\Collections' => array($vendorDir . '/qafoolabs/php-refactoring-browser/src/main'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
+    'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
+    'Assert' => array($vendorDir . '/beberlei/assert/lib'),
 );

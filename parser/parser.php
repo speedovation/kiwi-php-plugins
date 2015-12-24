@@ -55,7 +55,7 @@ class KiwiParser
     {
         try
             {      
-                $this->broker->processFile($filePath, FALSE);
+               $this->broker->processFile($filePath, FALSE);
             } 
             catch (\TokenReflection\Exception\ParseException $e) 
             {
@@ -214,6 +214,11 @@ class KiwiParser
         
         //$api->callApi( 'updateAutocompleteModel', [$this->json] );
     }
+    
+    public function result()
+    {
+		return $this->json;
+	}
 }
 
 /*$directories = glob("/home/yash/Projects/php/laravel/vendor/patchwork/utf8/class/Patchwork/PHP/" . '/*' , GLOB_ONLYDIR);

@@ -5,27 +5,51 @@ require __DIR__."/../vendor/autoload.php";
 
 //These lines will be used by IDE to call required functions 
 if(function_exists( $argv[1] ))
-  call_user_func($argv[1]);
+  call_user_func($argv[1], $argv[2]);
 
      	
-    	
-
-function parsePhp()
+ //print_r($argv[2]);
+  
+ // $json = $argv[2];
+function removeslashes($string)
 {
+    $string=implode("",explode("\\",$string));
+    return stripslashes(trim($string));
+}
+
+
+function return_result($method, $args)
+{
+        return '{ "method" : "'.$method.'", "params" : '.$args.'}';
+}
+
+function parsePhp($json)
+{
+	$json = str_replace("'","",$json);//  return;
+      
+    //$json = removeslashes($json);
+    //var_dump( $json  );
+	
+    $v = json_decode($json);
+	 //echo 'Last error: ', $json_errors[json_last_error()], PHP_EOL, PHP_EOL;
+    //print_r($v->file_path);
+    
+		
     $parser = new \KiWi\KiwiParser(TRUE);
     /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
 
-   $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+   //$connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
 
 	
-	
-    $request = $connection->sendRequest('file_path', []);
-    echo "Result:".$request->result;
     
     //"/var/www/html/kiwi/app/controllers/HomeController.php"
-    $parser->processFile($request->result)                 
+    $j=  $parser->processFile( $v->file_path )                 
        ->call()
-       ->send();
+       ->result(); 
+    
+    //echo $j."kkk";
+    echo return_result('updateAutocompleteModel', $j);
+    
 }
 
 

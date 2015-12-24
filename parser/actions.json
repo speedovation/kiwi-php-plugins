@@ -11,7 +11,7 @@
 		"title": "Parse Php",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"command" : "php parser/interface.php parsePhp",
+		"command" : "php parser/interface.php parsePhp selected_text:file_path",
 		"icons": {}
 		},
 		{
@@ -26,8 +26,8 @@
 	
 	"events" : {
 		
-    		"register_event_pattern" : "dot:not,on_text_changed,php interface.php tuk",
-    		"register_event_type" : "Php File,on_text_changed,php parser/interface.php parsePhp"
+    		
+    		"register_event_type" : "Php File,on_text_changed,php parser/interface.php parsePhp selected_text:file_path"
 		
 	}
     ,

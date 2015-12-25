@@ -11,7 +11,7 @@
 		"title": "Extract Method",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar extract-method <file> <line-range> <new-method>",
+		"command" : "php refactor.phar extract-method file_path:line-range:input_dialog-new-method",
 		"icons": {}
 		},
 		{

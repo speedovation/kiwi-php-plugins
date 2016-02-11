@@ -409,7 +409,8 @@ class MyPhpParser
 }
 
 
-
+//You can file or dir as option
+//For both it will generate JSON file
 $d = $argv[1];
 
 if(empty($d) )

@@ -23,19 +23,19 @@
 		"icons": {}
 		}
 	],
-	
+
 	"events" : {
-		
-    		
-    		"register_event_typekkk" : "Php File,on_text_changed,php parser/interface.php parsePhp selected_text:file_path"
-		
+
+
+    		"register_event_type" : "Php File,on_text_changed,php parser/interface.php parsePhp selected_text:file_path;Project,register_event_project,php parser/interface.php parsePhpProject selected_text:file_path"
+
 	}
     ,
     "files" : {
         "php" : ["interface"]
-    
+
     }
-    , 
+    ,
 
 	"icons": {
 	"128": "jsonlint-logo.png"

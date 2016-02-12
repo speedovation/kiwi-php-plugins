@@ -11,7 +11,15 @@
 		"title": "Extract Method",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar extract-method file_path:line-range:input_dialog-new-method",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php refactor.phar extract-method",
+							"available_methods" : "file_path,line-range,input_dialog-new-method",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
+
 		"icons": {}
 		},
 		{
@@ -19,7 +27,15 @@
 		"title": "Rename Local Variable",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar rename-local-variable <file> <line> <old-name> <new-name>",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php refactor.phar rename-local-variable <file> <line> <old-name> <new-name>",
+							"available_methods" : "",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
+
 		"icons": {}
 		},
 		{
@@ -27,7 +43,14 @@
 		"title": "Convert Local to Instance Variable",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar convert-local-to-instance-variable <file> <line> <variable>",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php refactor.phar convert-local-to-instance-variable <file> <line> <variable>",
+							"available_methods" : "",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
 		"icons": {}
 		},
 		{
@@ -35,7 +58,14 @@
 		"title": "Rename Class and Namespaces",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar fix-class-names <dir>",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php refactor.phar fix-class-names <dir>",
+							"available_methods" : "",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
 		"icons": {}
 		},
 		{
@@ -43,22 +73,29 @@
 		"title": "Optimize use statements",
 		"parentMenu": "menuPhpRefactor",
 		"shortcutKeys": "",
-		"command" : "php refactor.phar optimize-use <file>",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php refactor.phar optimize-use <file>",
+							"available_methods" : "",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
 		"icons": {}
 		}
 	],
-	
+
 	"events" : {
-		
-    	
-		
+
+
+
 	}
     ,
     "files" : {
         "php" : ["interface"]
-    
+
     }
-    , 
+    ,
 
 	"icons": {
 	"128": "jsonlint-logo.png"

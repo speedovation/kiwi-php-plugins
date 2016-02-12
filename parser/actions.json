@@ -11,7 +11,14 @@
 		"title": "Parse Php",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"command" : "php parser/interface.php parsePhp file_path",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php parser/interface.php parsePhp",
+							"available_methods" : "file_path",
+							"after_success_methods" : "",
+							"after_failure_methods" : ""
+						},
 		"icons": {}
 		},
 		{
@@ -19,7 +26,14 @@
 		"title": "Parse Project",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"command" : "php parser/interface.php parsePhpProject project_path",
+		"click_event" : {
+							"type" : "",
+							"signal" : "",
+							"command" : "php parser/interface.php parsePhpProject",
+							"available_methods" : "project_path",
+							"after_success_methods" : "refresh_sense_data",
+							"after_failure_methods" : ""
+						},
 		"icons": {}
 		}
 	],
@@ -61,3 +75,4 @@
 	},
 	"license": "Apache"
 }
+

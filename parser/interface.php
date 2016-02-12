@@ -31,7 +31,7 @@ function parsePhp()
     //Pass a valid file
 	 $parser->parseFile("");
 
-    echo "We are in parser PHP File";
+    echo "Done: Parsing PHP File";
 
     /*$json = str_replace("'","",$json);//  return;
 
@@ -78,7 +78,7 @@ function parsePhpProject($json)
 	 $parser->parseDir($v->project_path);
 
 
-    echo "We are in parser PHP Project";
+    echo "Done: Parsing PHP Project";
 /*        $parser = new \KiWi\KiwiParser(TRUE);*/
     /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
    /* $parser

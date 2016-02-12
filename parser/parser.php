@@ -282,7 +282,7 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
 
 
 
-        //if(IS_DEBUG)
+        if(IS_DEBUG)
         {
             //print_r($this->result);
             echo "Writing json file -> ". $filename . PHP_EOL ;

@@ -55,7 +55,7 @@
 									"signal" : "on_end_loading_project",
 									"command" : "php parser/interface.php parsePhpProject",
 									"available_methods" : "project_path",
-									"after_success_methods" : "",
+									"after_success_methods" : "refresh_sense_data",
 									"after_failure_methods" : ""
 								}
 

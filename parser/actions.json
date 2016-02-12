@@ -27,8 +27,26 @@
 	"events" : {
 
 
-    		"register_event_type" : "Php File,on_text_changedDUMP,php parser/interface.php parsePhp selected_text:file_path",
-         "register_event_project" : "Project,on_end_loading_project,php parser/interface.php parsePhpProject selected_text:file_path"
+    		"register_event_type" : {
+									"type" : "Php File",
+									"signal" : "on_text_changedDUMP",
+									"command" : "php parser/interface.php parsePhp",
+									"available_methods" : "selected_text:file_path",
+									"after_success_methods" : "",
+									"after_failure_methods" : ""
+								},
+
+		"register_event_project" : {
+									"type" : "Project",
+									"signal" : "on_end_loading_project",
+									"command" : "php parser/interface.php parsePhpProject",
+									"available_methods" : "project_path",
+									"after_success_methods" : "",
+									"after_failure_methods" : ""
+								}
+
+
+         
 
 	}
     ,

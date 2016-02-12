@@ -11,7 +11,7 @@
 		"title": "Parse Php",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"command" : "php parser/interface.php parsePhp selected_text:file_path",
+		"command" : "php parser/interface.php parsePhp file_path",
 		"icons": {}
 		},
 		{
@@ -19,7 +19,7 @@
 		"title": "Parse Project",
 		"parentMenu": "menuPhp",
 		"shortcutKeys": "",
-		"command" : "php parser/interface.php parsePhpProject",
+		"command" : "php parser/interface.php parsePhpProject project_path",
 		"icons": {}
 		}
 	],

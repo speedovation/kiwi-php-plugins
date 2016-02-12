@@ -8,6 +8,8 @@ if(function_exists( $argv[1] ))
   call_user_func($argv[1], $argv[2]);
 
 
+
+
  //print_r($argv[2]);
 
  // $json = $argv[2];
@@ -23,9 +25,15 @@ function return_result($method, $args)
         return '{ "method" : "'.$method.'", "params" : '.$args.'}';
 }
 
-function parsePhp($json)
+function parsePhp()
 {
-	$json = str_replace("'","",$json);//  return;
+    $parser = new KPhpParser();
+    //Pass a valid file
+	 $parser->parseFile("");
+
+    echo "We are in parser PHP File";
+
+    /*$json = str_replace("'","",$json);//  return;
 
     //$json = removeslashes($json);
     //var_dump( $json  );
@@ -36,25 +44,40 @@ function parsePhp($json)
 
 
     $parser = new \KiWi\KiwiParser(TRUE);
-    /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
+    //$parser->processDir('/home/yash/Projects/php/laravel/',["php"])
 
    //$connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
 
 
 
-    //"/var/www/html/kiwi/app/controllers/HomeController.php"
-    $j=  $parser->processFile( $v->file_path )
+    //"/var/www/html/kiwi/app/controllers/HomeController.php
+        $j=  $parser->processFile( $v->file_path )
        ->call()
        ->result();
 
     //echo $j."kkk";
-    echo return_result('updateAutocompleteModel', $j);
+    echo return_result('updateAutocompleteModel', $j);*/
 
 }
 
 
-function parsePhpProject()
+function parsePhpProject($json)
 {
+    //echo $json , PHP_EOL;
+    //Get path and other required items from json
+    $json = str_replace("'","",$json);
+    $json = str_replace("\\","",$json);
+    $v = json_decode($json);
+
+    //echo 'Last error: ', json_last_error(), PHP_EOL, PHP_EOL;
+    //print_r($v);
+
+
+    $parser = new KPhpParser();
+    //Pass a valid file
+	 $parser->parseDir($v->project_path);
+
+
     echo "We are in parser PHP Project";
 /*        $parser = new \KiWi\KiwiParser(TRUE);*/
     /*$parser->processDir('/home/yash/Projects/php/laravel/',["php"])*/
@@ -74,7 +97,9 @@ function parsePhpProject()
 }
 
 
-  function send()
+//We are not using this just an example we can register events from code or json file
+
+  function registerEventExample()
     {
         //$api = new \KiWiApi();
 

@@ -15,52 +15,6 @@ define("IS_DEBUG", FALSE );
 
 
 
-class Indexer
-{
-    private $path;
-
-    public function __construct($path)
-    {
-        $this->path = $path;
-    }
-
-    public function scanFile($filename)
-    {
-
-        if(empty($filename))
-        return;
-
-        new MyPhpParser($filename);
-    }
-
-    public function scan()
-    {
-
-        $iter = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($this->path, RecursiveDirectoryIterator::SKIP_DOTS),
-        RecursiveIteratorIterator::SELF_FIRST,
-        RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
-        );
-
-        $paths = array($this->path);
-
-        foreach ($iter as $file) {
-
-            if(IS_DEBUG)
-            echo "File: ". $file->getPathname() . PHP_EOL;
-
-            if($file->getExtension() == "php")
-            {
-                $this->scanFile( $file->getPathname() );
-            }
-
-            /*if ($dir->isDir()) {
-                $paths[] = $path;
-            }*/
-        }
-    }
-}
-
 
 class DirHelper
 {
@@ -209,7 +163,7 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
         }
         elseif ($node instanceof Stmt\PropertyProperty)
         {
-            print_r($node);
+            //print_r($node);
 
             array_push( $this->objects[$this->className]['variables'], array( "name" => $node->name , "position" => $node->getAttributes() ) );
 
@@ -283,22 +237,27 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
     public function writeJson()
     {
 
-        $fullname = $this->filename;
+        $fullname = $this->filename ;
+
+        //echo  "File: " . $fullname . " | " . PROJECTPATH . PHP_EOL;
+
 
         //$path_parts = pathinfo($fullname);
 
         //$dir = CACHE_DIR . $path_parts['dirname'] . DIRECTORY_SEPARATOR;
         $dir = CACHE_DIR . dirname($fullname) . DIRECTORY_SEPARATOR;
-        $dir = str_replace("/var/www/html/thabo/","",$dir);
+        $dir = PROJECTPATH .  str_replace(PROJECTPATH,"",$dir);
         /*echo $path_parts['basename'], "\n";
             echo $path_parts['extension'], "\n";
         echo $path_parts['filename'], "\n"; // since PHP 5.2.0*/
 
         //$dir = CACHE_DIR . $this->namespace_['name'] . DIRECTORY_SEPARATOR;
-
+        //echo "dir " . $dir;
         DirHelper::createDir($dir);
 
         $filename = $dir .  basename($this->filename,".php") .'.json';
+
+        //$filename =  $filename;
 
 
       /*  if(empty($this->namespace_))
@@ -330,14 +289,16 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
         }
 
         if (PHP_VERSION_ID >= 50400)
-        $content = json_encode($this->result, JSON_PRETTY_PRINT);
+            $content = json_encode($this->result, JSON_PRETTY_PRINT);
         else
-        $content = json_encode($this->result);
+            $content = json_encode($this->result);
 
         if(IS_DEBUG)
-        echo "content: " . $content.PHP_EOL;
+            echo "content: " . $content.PHP_EOL;
 
-        $fp = fopen($filename, 'w');
+        //echo PROJECTPATH . DIRECTORY_SEPARATOR. $filename . PHP_EOL . PHP_EOL. PHP_EOL;
+
+        $fp = fopen( $filename, 'w+');
 
         fwrite($fp, $content );
 
@@ -409,9 +370,60 @@ class MyPhpParser
 }
 
 
+class KPhpParser
+{
+
+    public function __construct()
+    {
+
+    }
+
+    public function parseFile($filename)
+    {
+
+        if(empty($filename))
+            return;
+
+        new MyPhpParser($filename);
+    }
+
+    public function parseDir($path)
+    {
+        define('PROJECTPATH', $path . DIRECTORY_SEPARATOR);
+
+        //Get all files recursively under given $path
+        $iter = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::SELF_FIRST,
+        RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
+        );
+
+        //Convert into Array
+        $paths = array($path);
+
+        //Iterate over all files
+        foreach ($iter as $file) {
+
+            if(IS_DEBUG)
+                echo "File: ". $file->getPathname() . PHP_EOL;
+
+            //We are interested only in PHP files
+            if($file->getExtension() == "php")
+            {
+                $this->parseFile( $file->getPathname() );
+            }
+
+            /*if ($dir->isDir()) {
+                $paths[] = $path;
+            }*/
+        }
+    }
+}
+
+
 //You can file or dir as option
 //For both it will generate JSON file
-$d = $argv[1];
+/*$d = $argv[1];
 
 if(empty($d) )
 {
@@ -423,6 +435,6 @@ $ind = new Indexer($d);
 if( is_dir($d) )
 $ind->scan();
 else
-$ind->scanFile($d);
+$ind->scanFile($d);*/
 
 //getcwd()

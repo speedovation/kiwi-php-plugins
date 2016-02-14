@@ -22,7 +22,7 @@ function removeslashes($string)
 
 function return_result($method, $args)
 {
-        return '{ "method" : "'.$method.'", "params" : '.$args.'}';
+    return '{ "method" : "'.$method.'", "params" : '.$args.'}';
 }
 
 function parsePhp($json)
@@ -39,7 +39,7 @@ function parsePhp($json)
 
     $parser = new KPhpParser();
     //Pass a valid file
-	 $parser->parseFile($v->project_path,$v->file_path);
+	$parser->parseFile($v->project_path,$v->file_path);
 
     echo "Done: Parsing PHP File";
 

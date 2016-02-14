@@ -25,11 +25,21 @@ function return_result($method, $args)
         return '{ "method" : "'.$method.'", "params" : '.$args.'}';
 }
 
-function parsePhp()
+function parsePhp($json)
 {
+     //echo $json , PHP_EOL;
+    //Get path and other required items from json
+    $json = str_replace("'","",$json);
+    $json = str_replace("\\","",$json);
+    $v = json_decode($json);
+
+    //echo 'Last error: ', json_last_error(), PHP_EOL, PHP_EOL;
+    //print_r($v);
+
+
     $parser = new KPhpParser();
     //Pass a valid file
-	 $parser->parseFile("");
+	 $parser->parseFile($v->project_path,$v->file_path);
 
     echo "Done: Parsing PHP File";
 

@@ -152,7 +152,7 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
             array_push( $this->objects[$this->className]['methods'], array( "name" => $node->name , "position" => $node->getAttributes() ) );
             //$this->classMethods[] = $node->name;
 
-            //print_r($node->getAttributes());
+            //print_r($node);
 
         }
         elseif ($node instanceof Stmt\Const_)
@@ -378,7 +378,7 @@ class KPhpParser
 
     }
 
-    public function parseFile($filename)
+    public function parseFileP($filename)
     {
 
         if(empty($filename))
@@ -386,6 +386,15 @@ class KPhpParser
 
         new MyPhpParser($filename);
     }
+
+    public function parseFile($path,$filename)
+    {
+
+        define('PROJECTPATH', $path . DIRECTORY_SEPARATOR);
+
+        $this->parseFileP($filename);
+    }
+
 
     public function parseDir($path)
     {
@@ -410,7 +419,7 @@ class KPhpParser
             //We are interested only in PHP files
             if($file->getExtension() == "php")
             {
-                $this->parseFile( $file->getPathname() );
+                $this->parseFileP( $file->getPathname() );
             }
 
             /*if ($dir->isDir()) {

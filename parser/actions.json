@@ -1,78 +1,67 @@
 {
-	"name": "PhpParser",
-	"title": "PHP Parser",
-	"description": "Php Parser for web developers",
-	"version": "1.0.0",
-	"parentMenu": "menuPhp",
-	"menuName": "Php Parser",
-	"actions": [
-		{
-		"name": "parsePhp",
-		"title": "Parse Php",
-		"parentMenu": "menuPhp",
-		"shortcutKeys": "",
-		"click_event" : {
-							"type" : "",
-							"signal" : "",
-							"command" : "php parser/interface.php parsePhp",
-							"available_methods" : "file_path",
-							"after_success_methods" : "",
-							"after_failure_methods" : ""
-						},
-		"icons": {}
-		},
-		{
-		"name": "parsePhpProject",
-		"title": "Parse Project",
-		"parentMenu": "menuPhp",
-		"shortcutKeys": "",
-		"click_event" : {
-							"type" : "",
-							"signal" : "",
-							"command" : "php parser/interface.php parsePhpProject",
-							"available_methods" : "project_path",
-							"after_success_methods" : "refresh_sense_data",
-							"after_failure_methods" : ""
-						},
-		"icons": {}
-		}
-	],
-
-	"events" : {
-
-
-    		"register_event_type" : {
-									"type" : "Php File",
-									"signal" : "on_text_changedDUMP",
-									"command" : "php parser/interface.php parsePhp",
-									"available_methods" : "selected_text:file_path",
-									"after_success_methods" : "",
-									"after_failure_methods" : ""
-								},
-
-		"register_event_project" : {
-									"type" : "Project",
-									"signal" : "on_end_loading_project",
-									"command" : "php parser/interface.php parsePhpProject",
-									"available_methods" : "project_path",
-									"after_success_methods" : "refresh_sense_data",
-									"after_failure_methods" : ""
-								}
-
-
-         
-
-	}
-    ,
-    "files" : {
-        "php" : ["interface"]
-
-    }
-    ,
-
-	"icons": {
-	"128": "jsonlint-logo.png"
-	},
-	"license": "Apache"
+    "name": "PhpParser",
+    "title": "PHP Parser",
+    "description": "Php Parser for web developers",
+    "version": "1.0.0",
+    "parentMenu": "menuPhp",
+    "menuName": "Php Parser",
+    "actions": [
+        {
+            "name": "parsePhp",
+            "title": "Parse Php",
+            "parentMenu": "menuPhp",
+            "shortcutKeys": "",
+            "click_event": {
+                "type": "",
+                "signal": "",
+                "command": "php parser/interface.php parsePhp",
+                "available_methods": "file_path",
+                "after_success_methods": "",
+                "after_failure_methods": ""
+            },
+            "icons": {}
+        },
+        {
+            "name": "parsePhpProject",
+            "title": "Parse Project",
+            "parentMenu": "menuPhp",
+            "shortcutKeys": "",
+            "click_event": {
+                "type": "",
+                "signal": "",
+                "command": "php parser/interface.php parsePhpProject",
+                "available_methods": "project_path",
+                "after_success_methods": "refresh_sense_data",
+                "after_failure_methods": ""
+            },
+            "icons": {}
+        }
+    ],
+    "events": {
+        "register_event_type": {
+            "type": "Php File",
+            "signal": "on_text_changedDUMP",
+            "command": "php parser/interface.php parsePhp",
+            "available_methods": "selected_text:file_path",
+            "after_success_methods": "",
+            "after_failure_methods": ""
+        },
+        "register_event_project": {
+            "type": "Project",
+            "signal": "on_end_loading_project",
+            "command": "php parser/interface.php parsePhpProject",
+            "available_methods": "project_path",
+            "after_success_methods": "refresh_sense_data",
+            "after_failure_methods": ""
+        }
+    },
+    "files": {
+        "php": [
+            "interface"
+        ]
+    },
+    "icons": {
+        "128": "jsonlint-logo.png"
+    },
+    "license": "Apache"
 }
-

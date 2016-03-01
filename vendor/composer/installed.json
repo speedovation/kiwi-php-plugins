@@ -690,59 +690,6 @@
         "description": "Refactoring Browser for PHP"
     },
     {
-        "name": "nikic/php-parser",
-        "version": "v2.0.0",
-        "version_normalized": "2.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "c542e5d86a9775abd1021618eb2430278bfc1e01"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c542e5d86a9775abd1021618eb2430278bfc1e01",
-            "reference": "c542e5d86a9775abd1021618eb2430278bfc1e01",
-            "shasum": ""
-        },
-        "require": {
-            "ext-tokenizer": "*",
-            "php": ">=5.4"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2015-12-04 15:28:43",
-        "bin": [
-            "bin/php-parse"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PhpParser\\": "lib/PhpParser"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Nikita Popov"
-            }
-        ],
-        "description": "A PHP parser written in PHP",
-        "keywords": [
-            "parser",
-            "php"
-        ]
-    },
-    {
         "name": "twig/twig",
         "version": "v1.24.0",
         "version_normalized": "1.24.0.0",
@@ -921,17 +868,17 @@
     },
     {
         "name": "symfony/console",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
+        "version": "v2.8.3",
+        "version_normalized": "2.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/console.git",
-            "reference": "d0239fb42f98dd02e7d342f793c5d2cdee0c478d"
+            "reference": "56cc5caf051189720b8de974e4746090aaa10d44"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/console/zipball/d0239fb42f98dd02e7d342f793c5d2cdee0c478d",
-            "reference": "d0239fb42f98dd02e7d342f793c5d2cdee0c478d",
+            "url": "https://api.github.com/repos/symfony/console/zipball/56cc5caf051189720b8de974e4746090aaa10d44",
+            "reference": "56cc5caf051189720b8de974e4746090aaa10d44",
             "shasum": ""
         },
         "require": {
@@ -948,7 +895,7 @@
             "symfony/event-dispatcher": "",
             "symfony/process": ""
         },
-        "time": "2016-01-14 08:33:16",
+        "time": "2016-02-28 16:20:50",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -983,23 +930,23 @@
     },
     {
         "name": "symfony/finder",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
+        "version": "v2.8.3",
+        "version_normalized": "2.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/finder.git",
-            "reference": "c90fabdd97e431ee19b6383999cf35334dff27da"
+            "reference": "877bb4b16ea573cc8c024e9590888fcf7eb7e0f7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/finder/zipball/c90fabdd97e431ee19b6383999cf35334dff27da",
-            "reference": "c90fabdd97e431ee19b6383999cf35334dff27da",
+            "url": "https://api.github.com/repos/symfony/finder/zipball/877bb4b16ea573cc8c024e9590888fcf7eb7e0f7",
+            "reference": "877bb4b16ea573cc8c024e9590888fcf7eb7e0f7",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2016-01-14 08:26:52",
+        "time": "2016-02-22 16:12:45",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1034,23 +981,23 @@
     },
     {
         "name": "symfony/filesystem",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
+        "version": "v2.8.3",
+        "version_normalized": "2.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/filesystem.git",
-            "reference": "637b64d0ee10f44ae98dbad651b1ecdf35a11e8c"
+            "reference": "65cb36b6539b1d446527d60457248f30d045464d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/filesystem/zipball/637b64d0ee10f44ae98dbad651b1ecdf35a11e8c",
-            "reference": "637b64d0ee10f44ae98dbad651b1ecdf35a11e8c",
+            "url": "https://api.github.com/repos/symfony/filesystem/zipball/65cb36b6539b1d446527d60457248f30d045464d",
+            "reference": "65cb36b6539b1d446527d60457248f30d045464d",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2016-01-13 10:28:07",
+        "time": "2016-02-22 15:02:30",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1085,23 +1032,23 @@
     },
     {
         "name": "symfony/yaml",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
+        "version": "v2.8.3",
+        "version_normalized": "2.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/yaml.git",
-            "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8"
+            "reference": "2a4ee40acb880c56f29fb1b8886e7ffe94f3b995"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/34c8a4b51e751e7ea869b8262f883d008a2b81b8",
-            "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/2a4ee40acb880c56f29fb1b8886e7ffe94f3b995",
+            "reference": "2a4ee40acb880c56f29fb1b8886e7ffe94f3b995",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2016-01-13 10:28:07",
+        "time": "2016-02-23 07:41:20",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1136,23 +1083,23 @@
     },
     {
         "name": "symfony/process",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
+        "version": "v2.8.3",
+        "version_normalized": "2.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/process.git",
-            "reference": "6f1979c3b0f4c22c77a8a8971afaa7dd07f082ac"
+            "reference": "7dedd5b60550f33dca16dd7e94ef8aca8b67bbfe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/process/zipball/6f1979c3b0f4c22c77a8a8971afaa7dd07f082ac",
-            "reference": "6f1979c3b0f4c22c77a8a8971afaa7dd07f082ac",
+            "url": "https://api.github.com/repos/symfony/process/zipball/7dedd5b60550f33dca16dd7e94ef8aca8b67bbfe",
+            "reference": "7dedd5b60550f33dca16dd7e94ef8aca8b67bbfe",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2016-01-06 09:59:23",
+        "time": "2016-02-02 13:33:15",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1187,17 +1134,17 @@
     },
     {
         "name": "guzzlehttp/psr7",
-        "version": "1.2.2",
-        "version_normalized": "1.2.2.0",
+        "version": "1.2.3",
+        "version_normalized": "1.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/psr7.git",
-            "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb"
+            "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5d04bdd2881ac89abde1fb78cc234bce24327bb",
-            "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
+            "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
             "shasum": ""
         },
         "require": {
@@ -1210,7 +1157,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-01-23 01:23:02",
+        "time": "2016-02-18 21:54:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1247,17 +1194,17 @@
     },
     {
         "name": "graze/guzzle-jsonrpc",
-        "version": "3.2.0",
-        "version_normalized": "3.2.0.0",
+        "version": "3.2.1",
+        "version_normalized": "3.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/graze/guzzle-jsonrpc.git",
-            "reference": "a94d2b23b5a216870c2079d97fdda28c278e4522"
+            "reference": "c4513b7659534792b906723158a8388f54275a61"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/graze/guzzle-jsonrpc/zipball/a94d2b23b5a216870c2079d97fdda28c278e4522",
-            "reference": "a94d2b23b5a216870c2079d97fdda28c278e4522",
+            "url": "https://api.github.com/repos/graze/guzzle-jsonrpc/zipball/c4513b7659534792b906723158a8388f54275a61",
+            "reference": "c4513b7659534792b906723158a8388f54275a61",
             "shasum": ""
         },
         "require": {
@@ -1272,7 +1219,7 @@
             "mockery/mockery": "~0.9",
             "phpunit/phpunit": "~4.3"
         },
-        "time": "2016-01-07 16:29:07",
+        "time": "2016-02-16 15:18:21",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1304,6 +1251,59 @@
             "jsonrpc",
             "ring",
             "rpc"
+        ]
+    },
+    {
+        "name": "nikic/php-parser",
+        "version": "v2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "ce5be709d59b32dd8a88c80259028759991a4206"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ce5be709d59b32dd8a88c80259028759991a4206",
+            "reference": "ce5be709d59b32dd8a88c80259028759991a4206",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-02-28 19:48:28",
+        "bin": [
+            "bin/php-parse"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpParser\\": "lib/PhpParser"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Nikita Popov"
+            }
+        ],
+        "description": "A PHP parser written in PHP",
+        "keywords": [
+            "parser",
+            "php"
         ]
     }
 ]

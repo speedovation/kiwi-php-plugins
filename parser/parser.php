@@ -224,8 +224,8 @@ class MyParserNodeVisitor extends \PhpParser\NodeVisitorAbstract
         //create class and methods
         if(IS_DEBUG)
         {
-            print_r($this->result);
-            echo "filname: ". $this->filename;
+            //print_r($this->result);
+            echo "filname: ". $this->filename . PHP_EOL;
         }
 
         //$this->result[$className]= $classMethods;

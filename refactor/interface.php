@@ -1,10 +1,9 @@
-#!/usr/bin/env php
 <?php
-
 
 include __DIR__ . '/../vendor/autoload.php';
 
 use QafooLabs\Refactoring\Adapters\Symfony\CliApplication;
+
 
 $application = new CliApplication();
 $application->run();
@@ -12,7 +11,7 @@ $application->run();
 
 /*
 Refactorings
-Extract Method   
+Extract Method
 php refactor.phar extract-method <file_path> <line-range> <new-method>
 */
 function extractMethod()
@@ -27,7 +26,7 @@ php refactor.phar rename-local-variable <file_path> <line> <old-name> <new-name>
 */
 function renameLocalVariable()
 {
-    
+
 }
 
 
@@ -37,7 +36,7 @@ php refactor.phar convert-local-to-instance-variable <file_path> <line> <variabl
 */
 function convertLocalToInstanceVariable()
 {
-    
+
 }
 
 
@@ -47,7 +46,7 @@ php refactor.phar fix-class-names <dir>
 */
 function renameClassAndNamespaces()
 {
-    
+
 }
 
 
@@ -57,5 +56,5 @@ php refactor.phar optimize-use <file_path>
 */
 function optimizeUse()
 {
-    
+
 }

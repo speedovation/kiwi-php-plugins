@@ -4,14 +4,14 @@ use PhpParser\Error;
 use PhpParser\ParserFactory;
 
 
-function checkSyntaxPhp($code)
+function checkSyntaxPhp($code,$filename)
 {
 
     $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
     
     try 
     {
-        print $code. "  \n\n";
+        //print $code. "  \n\n";
         $stmts = $parser->parse($code);
         // $stmts is an array of statement nodes
         return "";
@@ -49,6 +49,12 @@ function checkSyntaxPhp($code)
         }*/
         
         //Call API to mark error spot on editor
+        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+    
+    $request = $connection->sendRequest('setMarkers',array('start' =>  $e->getStartLine(), 
+                                                            'end'  => $e->getEndLine(),
+                                                            'file_name' => $filename
+                                                              ));
         
         
         return "Parse Error: ". $e->getMessage(). 

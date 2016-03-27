@@ -46,9 +46,9 @@ function checkSyntax($json)
         //$r = runkit_lint( $request->result );
         $code = $request->result;
         
-        $r = checkSyntaxPhp($code);
+        $r = checkSyntaxPhp($code,$v->file_path);
         
-        echo "R: ".$r;
+        echo "R: ".$r ."\n\n";
     }
     else
     {
@@ -56,7 +56,7 @@ function checkSyntax($json)
         var_dump($request->errorData);
     }
     
-    echo "\n\nDone: Checking Syntax of PHP File\n\n";
+    //echo "\n\nDone: Checking Syntax of PHP File\n\n";
     
     
     

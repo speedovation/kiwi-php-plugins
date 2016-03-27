@@ -30,20 +30,25 @@ function checkSyntax($json)
     
     //runkit_lint();
     
+    $json = str_replace("'","",$json);
+    $json = str_replace("\\","",$json);
+    $v = json_decode($json);
+    
+    
     echo "\n\n";
     
     $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
     
-    $request = $connection->sendRequest('text');
+    $request = $connection->sendRequest('text',array('file_name'=> $v->file_path ));
     
     if(!$request->isError())
     {
         //$r = runkit_lint( $request->result );
         $code = $request->result;
         
-        checkSyntaxPhp($code);
+        $r = checkSyntaxPhp($code);
         
-        //echo "R: ".$r;
+        echo "R: ".$r;
     }
     else
     {

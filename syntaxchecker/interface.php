@@ -2,6 +2,8 @@
 
 require __DIR__."/../vendor/autoload.php";
 
+include "parserPhp.php";
+
 //These lines will be used by IDE to call required functions
 if(function_exists( $argv[1] ))
 call_user_func($argv[1], $argv[2]);
@@ -36,7 +38,12 @@ function checkSyntax($json)
     
     if(!$request->isError())
     {
-        print $request->result;
+        //$r = runkit_lint( $request->result );
+        $code = $request->result;
+        
+        checkSyntaxPhp($code);
+        
+        //echo "R: ".$r;
     }
     else
     {

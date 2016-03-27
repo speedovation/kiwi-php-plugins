@@ -28,9 +28,11 @@ function checkSyntax($json)
     
     //runkit_lint();
     
+    echo "\n\n";
+    
     $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
     
-    $request = $connection->sendRequest('text', array() );
+    $request = $connection->sendRequest('text');
     
     if(!$request->isError())
     {
@@ -42,7 +44,7 @@ function checkSyntax($json)
         var_dump($request->errorData);
     }
     
-    echo "Done: Checking Syntax of PHP File";
+    echo "\n\nDone: Checking Syntax of PHP File\n\n";
     
     
     

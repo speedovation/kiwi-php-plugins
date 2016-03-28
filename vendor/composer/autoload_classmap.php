@@ -103,6 +103,7 @@ return array(
     'KiWi\\DependencyInjection\\Application' => $baseDir . '/src/DependencyInjection/Application.php',
     'KiWi\\KiwiParser' => $baseDir . '/src/Plugins/Parser/parser_justold.php',
     'KiWi\\Plugins\\SyntaxChecker\\Command\\GreetCommand' => $baseDir . '/src/Plugins/SyntaxChecker/Command/Command.php',
+    'KiWi\\Providers\\ApiServiceProvider' => $baseDir . '/src/Providers/ApiServiceProvider.php',
     'KiWi\\Util\\Api' => $baseDir . '/src/Util/Api.php',
     'KiWi\\Util\\Command\\AboutCommand' => $baseDir . '/src/Util/Command/AboutCommand.php',
     'KiWi\\Util\\Command\\BaseCommand' => $baseDir . '/src/Util/Command/BaseCommand.php',

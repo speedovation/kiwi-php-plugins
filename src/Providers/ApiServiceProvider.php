@@ -11,7 +11,7 @@ class ApiServiceProvider implements ServiceProviderInterface
     {
         $app['api'] = function () use ($app) 
 		{
-            $api = new \KiWi\Util\Api;
+            $api = new \KiWi\Util\Api($app);
             
             return $api;
         };

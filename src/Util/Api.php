@@ -2,8 +2,23 @@
 
 namespace KiWi\Util;
 
+use KiWi\DependencyInjection\Application;
+
 class Api
 {
+    protected $app;
+    
+    public function __construct(Application $app)
+    {
+        $this->app = $app;
+    }
+    
+    
+    function hello()
+    {
+        echo "Hello Test";
+    }
+    
     function removeslashes($string)
     {
         $string=implode("",explode("\\",$string));

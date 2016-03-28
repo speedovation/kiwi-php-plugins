@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
-//use Easybook\Providers\CodeHighlighterServiceProvider;
+use KiWi\Providers\ApiServiceProvider;
 //use Easybook\Util\Toolkit;
 
 class Application extends Container
@@ -72,7 +72,7 @@ SIGNATURE;
 
        
 
-        //$this->register(new PublisherServiceProvider());
+        $this->register(new ApiServiceProvider());
         
 
         

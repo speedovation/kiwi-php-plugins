@@ -48,13 +48,7 @@ function checkSyntaxPhp($code,$filename)
                 ':' . $e->getEndColumn($code);
         }*/
         
-        //Call API to mark error spot on editor
-        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
-    
-    $request = $connection->sendRequest('setMarkers',array('start' =>  $e->getStartLine(), 
-                                                            'end'  => $e->getEndLine(),
-                                                            'file_name' => $filename
-                                                              ));
+        return $e;
         
         
         return "Parse Error: ". $e->getMessage(). 

@@ -48,6 +48,22 @@ function checkSyntax($json)
         
         $r = checkSyntaxPhp($code,$v->file_path);
         
+        
+        if(!empty($r) )
+        {
+            echo "Inside Error";
+            
+            //Call API to mark error spot on editor
+            $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+    
+            $request = $connection->sendRequest('setMarkers',array('start' =>  $e->getStartLine(), 
+                                                            'end'  => $e->getEndLine(),
+                                                            'file_name' => $filename
+                                                              ));
+            
+            echo "Calling finised";
+        }
+        
         echo "R: ".$r ."\n\n";
     }
     else

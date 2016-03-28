@@ -15,6 +15,9 @@ namespace Easybook\Console;
 use Easybook\DependencyInjection\Application;
 
 use KiWi\Plugins\Syntaxchecker\Command\GreetCommand;
+
+use KiWi\Util\Command\AboutCommand;
+
 use Symfony\Component\Console\Application;
 
 //$application = new Application();
@@ -26,20 +29,16 @@ use Symfony\Component\Console\Application;
 class ConsoleApplication extends Application
 {
     private $app;
+    
     public function getApp()
     {
         return $this->app;
     }
+    
     public function __construct(Application $app)
     {
-        $this->app = $app;
-        parent::__construct('easybook', $this->app->getVersion());
         $this->add(new AboutCommand($this->app['app.signature']));
-        $this->add(new BookNewCommand());
-        $this->add(new BookPublishCommand());
-        $this->add(new BookCustomizeCommand());
-        $this->add(new EasybookVersionCommand());
-        $this->add(new EasybookBenchmarkCommand());
+        $this->add(new GreetCommand());
         $this->setDefaultCommand('about');
     }
 }

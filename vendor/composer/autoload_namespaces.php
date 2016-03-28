@@ -9,7 +9,7 @@ return array(
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'TomPHP\\PatchBuilder\\' => array($vendorDir . '/tomphp/patch-builder/src'),
-    'TokenReflection' => array($vendorDir . '/speedovation/php-token-reflection', $vendorDir . '/andrewsville/php-token-reflection'),
+    'TokenReflection' => array($vendorDir . '/andrewsville/php-token-reflection'),
     'Tivoka' => array($vendorDir . '/tivoka/tivoka/lib'),
     'QafooLabs\\Refactoring' => array($vendorDir . '/qafoolabs/php-refactoring-browser/src/main'),
     'QafooLabs\\Patches' => array($vendorDir . '/qafoolabs/php-refactoring-browser/src/main'),

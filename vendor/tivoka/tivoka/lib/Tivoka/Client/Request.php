@@ -113,17 +113,12 @@ class Request
         if(trim($response) == '') {
             throw new Exception\ConnectionException('No response received');
         }
-
+    
         //decode
         $resparr = json_decode($response,true);
         if($resparr == NULL) {
-            echo json_last_error();
-            echo json_last_error_msg();
-            
             throw new Exception\SyntaxException('Invalid response encoding');
         }
-        
-        $resparr['id'] = $this->id;
         
         $this->interpretResponse($resparr);
     }

@@ -143,7 +143,7 @@ class Tcp extends AbstractConnection {
         if ($response === false) {
             throw new Exception\ConnectionException('Connection to "' . $this->host . ':' . $this->port . '" failed');
         }
-    
+
         $request->setResponse($response);
         return $request;
     }

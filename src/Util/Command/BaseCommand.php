@@ -1,6 +1,6 @@
 <?php
 
-namespace Base\Command;
+namespace KiWi\Util\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

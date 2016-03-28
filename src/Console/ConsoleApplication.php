@@ -7,26 +7,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
 */
-namespace Easybook\Console;
+namespace KiWi\Console;
 
+//use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Application as SymfonyConsoleApplication;
 
-//use Symfony\Component\Console\Application as SymfonyConsoleApplication;
-
-use Easybook\DependencyInjection\Application;
-
-use KiWi\Plugins\Syntaxchecker\Command\GreetCommand;
-
+use KiWi\Plugins\SyntaxChecker\Command\GreetCommand;
 use KiWi\Util\Command\AboutCommand;
-
-use Symfony\Component\Console\Application;
+use KiWi\DependencyInjection\Application;
 
 //$application = new Application();
 //$application->add(new GreetCommand());
 //$application->run();
 
 
-
-class ConsoleApplication extends Application
+class ConsoleApplication extends SymfonyConsoleApplication
 {
     private $app;
     
@@ -37,6 +32,10 @@ class ConsoleApplication extends Application
     
     public function __construct(Application $app)
     {
+        $this->app = $app;
+        
+        parent::__construct('KiWi', $this->app->getVersion());
+        
         $this->add(new AboutCommand($this->app['app.signature']));
         $this->add(new GreetCommand());
         $this->setDefaultCommand('about');

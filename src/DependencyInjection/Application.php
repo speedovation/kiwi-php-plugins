@@ -26,11 +26,46 @@ class Application extends Container
         $this['app.charset'] = 'UTF-8';
         $this['app.name'] = 'easybook';
         $this['app.signature'] = <<<SIGNATURE
-                     |              |
- ,---.,---.,---.,   .|---.,---.,---.|__/
- |---',---|`---.|   ||   ||   ||   ||  \
- `---'`---^`---'`---|`---'`---'`---'`   `
-                `---'
+ ___  ____    _  ____      ____  _   
+|_  ||_  _|  (_)|_  _|    |_  _|(_)  
+  | |_/ /    __   \ \  /\  / /  __   
+  |  __'.   [  |   \ \/  \/ /  [  |  
+ _| |  \ \_  | |    \  /\  /    | |  
+|____||____|[___]    \/  \/    [___] 
+
+
+KKKKKKKKK    KKKKKKK  iiii WWWWWWWW                           WWWWWWWW iiii  
+K:::::::K    K:::::K i::::iW::::::W                           W::::::Wi::::i 
+K:::::::K    K:::::K  iiii W::::::W                           W::::::W iiii  
+K:::::::K   K::::::K       W::::::W                           W::::::W       
+KK::::::K  K:::::KKKiiiiiii W:::::W           WWWWW           W:::::Wiiiiiii 
+  K:::::K K:::::K   i:::::i  W:::::W         W:::::W         W:::::W i:::::i 
+  K::::::K:::::K     i::::i   W:::::W       W:::::::W       W:::::W   i::::i 
+  K:::::::::::K      i::::i    W:::::W     W:::::::::W     W:::::W    i::::i 
+  K:::::::::::K      i::::i     W:::::W   W:::::W:::::W   W:::::W     i::::i 
+  K::::::K:::::K     i::::i      W:::::W W:::::W W:::::W W:::::W      i::::i 
+  K:::::K K:::::K    i::::i       W:::::W:::::W   W:::::W:::::W       i::::i 
+KK::::::K  K:::::KKK i::::i        W:::::::::W     W:::::::::W        i::::i 
+K:::::::K   K::::::Ki::::::i        W:::::::W       W:::::::W        i::::::i
+K:::::::K    K:::::Ki::::::i         W:::::W         W:::::W         i::::::i
+K:::::::K    K:::::Ki::::::i          W:::W           W:::W          i::::::i
+KKKKKKKKK    KKKKKKKiiiiiiii           WWW             WWW           iiiiiiii
+
+'||  //'      '||      ||`      
+ || //    ''   ||      ||   ''  
+ ||<<     ||   ||  /\  ||   ||  
+ || \\    ||    \\//\\//    ||  
+.||  \\. .||.    \/  \/    .||. 
+
+  _  __  _  __          __  _ 
+ | |/ / (_) \ \        / / (_)
+ | ' /   _   \ \  /\  / /   _ 
+ |  <   | |   \ \/  \/ /   | |
+ | . \  | |    \  /\  /    | |
+ |_|\_\ |_|     \/  \/     |_|
+                              
+                                                                                      
+                                    
 SIGNATURE;
 
         // -- global directories location -------------------------------------
@@ -74,6 +109,15 @@ SIGNATURE;
 
         $this->register(new ApiServiceProvider());
         
+        $this->loadPlugins();
+       
+  
+/*    $providers = (array) require __DIR__.'/providers.php';
+    array_walk($providers, function($class, $i, $app) {
+      class_exists($class) AND $app->register(new $class);
+    }, $app);*/
+  
+        
 
         
 
@@ -116,6 +160,57 @@ SIGNATURE;
         $this[$id] = $array;
 
         return $array;
+    }
+    
+    public function loadProviders($path)
+    {
+        
+        //$providers = (array) require __DIR__.'/providers.php';
+        //array_walk($providers, function($class, $i, $app) {
+        //  class_exists($class) AND $app->register(new $class);
+        //}, $app);
+        
+        $iterator = new \DirectoryIterator( $path );
+        foreach ($iterator as $fileinfo) 
+        {
+            if ($fileinfo->isFile() )
+            {
+                echo "\n\nProvider: ". $fileinfo->getFilename() . "\n\n";
+                //$this->register(new $fileinfo->getFilename()) ; 
+            }   
+        }
+  
+    }
+        
+    public function loadPlugins()
+    {
+         $path = realpath(__DIR__.'/../Plugins/');
+        //
+        $iterator = new \DirectoryIterator( $path );
+        foreach ($iterator as $fileinfo) 
+        {
+            if ($fileinfo->isDir() && !$fileinfo->isDot()) 
+            {
+                //echo $fileinfo->getFilename() . "\n";
+                
+                
+                //We are inside plgin dir
+                $p = $path."/".$fileinfo->getFilename()."/Providers/";
+                
+                echo "\n\nPP:". $p . PHP_EOL;
+                
+                if(!file_exists($p))
+                {
+                    echo "No providers found in $p";
+                    continue;
+                }
+                
+                $this->loadProviders($p);
+                
+                
+                // recursion goes here.
+            }
+        }
     }
 
    

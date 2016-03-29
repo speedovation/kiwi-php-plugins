@@ -1,6 +1,6 @@
 %s
 
-<info>easybook</info> is the <comment>easiest</comment> and <comment>fastest</comment> tool to generate,
+<info>KiWi</info> is the <error>easiest</error> and <warn>fastest</warn> tool to generate,
 technical documentation, books, manuals and websites.
 
 To create a new book, use the <info>new</info> command:

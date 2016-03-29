@@ -5,7 +5,7 @@ namespace KiWi\Console;
 //use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Application as SymfonyConsoleApplication;
 
-use KiWi\Plugins\SyntaxChecker\Command\GreetCommand;
+use KiWi\Plugins\SyntaxChecker\Command\SyntaxCheckerCommand;
 use KiWi\Util\Command\AboutCommand;
 use KiWi\DependencyInjection\Application;
 
@@ -30,7 +30,7 @@ class ConsoleApplication extends SymfonyConsoleApplication
         parent::__construct('KiWi', $this->app->getVersion());
         
         $this->add(new AboutCommand($this->app['app.signature']));
-        $this->add(new GreetCommand());
+        $this->add(new SyntaxCheckerCommand());
         $this->setDefaultCommand('about');
     }
 }

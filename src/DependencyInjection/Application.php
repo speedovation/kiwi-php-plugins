@@ -11,6 +11,8 @@ use Symfony\Component\Yaml\Yaml;
 use KiWi\Providers\ApiServiceProvider;
 //use Easybook\Util\Toolkit;
 
+define('PLUGINSPATH', realpath(__DIR__.'/../Plugins/') ); 
+
 class Application extends Container
 {
     const VERSION = '5.0-DEV';
@@ -170,13 +172,18 @@ SIGNATURE;
         //  class_exists($class) AND $app->register(new $class);
         //}, $app);
         
-        $iterator = new \DirectoryIterator( $path );
+        $iterator = new \DirectoryIterator(PLUGINSPATH."/$path/Providers/" );
         foreach ($iterator as $fileinfo) 
         {
             if ($fileinfo->isFile() )
             {
                 echo "\n\nProvider: ". $fileinfo->getFilename() . "\n\n";
-                //$this->register(new $fileinfo->getFilename()) ; 
+                
+                $class = $fileinfo->getBasename('.php');
+                
+                $class1 = "\KiWi\Plugins\\".$path."\\Providers\\".$class;
+                
+                $this->register(new $class1 ) ; 
             }   
         }
   
@@ -184,9 +191,9 @@ SIGNATURE;
         
     public function loadPlugins()
     {
-         $path = realpath(__DIR__.'/../Plugins/');
+         
         //
-        $iterator = new \DirectoryIterator( $path );
+        $iterator = new \DirectoryIterator( PLUGINSPATH );
         foreach ($iterator as $fileinfo) 
         {
             if ($fileinfo->isDir() && !$fileinfo->isDot()) 
@@ -195,7 +202,7 @@ SIGNATURE;
                 
                 
                 //We are inside plgin dir
-                $p = $path."/".$fileinfo->getFilename()."/Providers/";
+                $p = PLUGINSPATH."/".$fileinfo->getFilename()."/Providers/";
                 
                 echo "\n\nPP:". $p . PHP_EOL;
                 
@@ -205,7 +212,7 @@ SIGNATURE;
                     continue;
                 }
                 
-                $this->loadProviders($p);
+                $this->loadProviders( $fileinfo->getFilename() );
                 
                 
                 // recursion goes here.

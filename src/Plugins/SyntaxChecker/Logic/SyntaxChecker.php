@@ -2,6 +2,7 @@
 
 namespace KiWi\Plugins\SyntaxChecker\Logic;
 
+use KiWi\DependencyInjection\Application;
 use PhpParser\Error;
 use PhpParser\ParserFactory;
 
@@ -26,6 +27,7 @@ class SyntaxChecker
             //print $code. "  \n\n";
             $stmts = $parser->parse($code);
             // $stmts is an array of statement nodes
+            echo "No errors found";
             return "";
         }
         catch (PhpParser\Error $e)
@@ -60,39 +62,55 @@ class SyntaxChecker
                 ':' . $e->getEndColumn($code);
             }*/
             
-            return $e;
+            
+            //CALL setmarkers here
             
             
-            return "Parse Error: ". $e->getMessage().
+            
+            
+            
+            echo "Parse Error: ". $e->getMessage().
             " - S: ". $e->getStartLine().
             " - E: ". $e->getEndLine();
+
+            return $e;
         }
         
     }
     
     function checkSyntax($json)
     {
-        //bool runkit_lint ( string $code )
         
-        //runkit_lint();
+        $v = $this->app['api']->decode($json);
         
-        $json = str_replace("'","",$json);
-        $json = str_replace("\\","",$json);
-        $v = json_decode($json);
-        
-        
+        print_r($v);
         echo "\n\n";
+                
+        $request = $this->app['api']->call_kiwi('text',array('file_name'=> $v->file_path ));
         
-        $connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
         
-        $request = $connection->sendRequest('text',array('file_name'=> $v->file_path ));
-        
-        if(!$request->isError())
+        if(!empty($request))
         {
-            //$r = runkit_lint( $request->result );
+            
+            
             $code = $request->result;
             
-            $r = $this->checkSyntaxPhp($code,$v->file_path);
+            $this->checkSyntaxPhp($code,$v->file_path);
+            
+            
+        }
+        
+        //$connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
+        
+        
+        
+        
+        //$request = $connection->sendRequest('hello');
+        
+     /*   if(!$request->isError())
+        {
+            //$r = runkit_lint( $request->result );
+           
             
             
             if(!empty($r) )
@@ -116,7 +134,11 @@ class SyntaxChecker
         {
             print 'Error '.$request->error.': '.$request->errorMessage;
             var_dump($request->errorData);
-        }
+        }*/
+        
+        
+        
+        
         
         //echo "\n\nDone: Checking Syntax of PHP File\n\n";
         

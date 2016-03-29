@@ -13,6 +13,12 @@ class Api
         $this->app = $app;
     }
     
+    function decode($json)
+    {
+        $json = str_replace("'","",$json);
+        $json = str_replace("\\","",$json);
+        return json_decode($json);
+    }
     
     function hello()
     {
@@ -45,8 +51,7 @@ class Api
             //$r = runkit_lint( $request->result );
             $r = $request->result;
             
-			
-			return $r;
+			return $request;
            
         }
         else

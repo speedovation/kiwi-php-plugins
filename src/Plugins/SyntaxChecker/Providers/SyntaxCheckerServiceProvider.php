@@ -11,7 +11,7 @@ class SyntaxCheckerServiceProvider implements ServiceProviderInterface
     {
         $app['SyntaxChecker'] = function () use ($app) 
 		{
-            $api = new \KiWi\Plugins\SyntaxChecker\Logic\Checker($app);
+            $api = new \KiWi\Plugins\SyntaxChecker\Logic\SyntaxChecker($app);
             
             return $api;
         };

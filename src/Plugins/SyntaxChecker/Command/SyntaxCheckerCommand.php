@@ -34,25 +34,29 @@ class SyntaxCheckerCommand extends Command
         //print_r($this->getApplication()->getApp()['api']->hello() );
     }
     
-    
+    // php syntaxchecker/interface.php 
+    // checkSyntax 
+    // '{\"selected_text\":\"\",\"file_path\":\"/home/yash/Projects/kiwi/Build/Debug/resources/flavours/php/test/test2.php\"}' 
+    //9040
+
     protected function configure()
     {
-        
-        
         $this
-            ->setName('demo:greet')
-            ->setDescription('Greet someone')
+            ->setName('checkSyntax')
+            ->setDescription('Check Syntax of PHP file')
+           
             ->addArgument(
-                'name',
-                InputArgument::OPTIONAL,
-                'Who do you want to greet?'
+                'data',
+                InputArgument::REQUIRED,
+                'Available methods data'
             )
-            ->addOption(
-               'yell',
-               null,
-               InputOption::VALUE_NONE,
-               'If set, the task will yell in uppercase letters'
+            
+             ->addArgument(
+                'port',
+                InputArgument::REQUIRED,
+                'port'
             )
+            
         ;
     }
 
@@ -62,8 +66,17 @@ class SyntaxCheckerCommand extends Command
         //Testing
         echo "\n\n"; //$this->app['api']->hello();
 
-        $name = $input->getArgument('name');
-        if ($name) 
+        //$name = $input->getArgument('name');
+        $data = $input->getArgument('data');
+        $port = $input->getArgument('port');
+        
+        $text = "Data: ".$data . " Port: ".$port;
+        
+        //$this->app['api']->decode($data);
+        
+        $this->app['SyntaxChecker']->checkSyntax($data);
+        
+        /*if ($name) 
         {
             $text = 'Hello '.$name;
         } 
@@ -75,7 +88,7 @@ class SyntaxCheckerCommand extends Command
         if ($input->getOption('yell')) 
         {
             $text = strtoupper($text);
-        }
+        }*/
 
         $output->writeln($text);
     }

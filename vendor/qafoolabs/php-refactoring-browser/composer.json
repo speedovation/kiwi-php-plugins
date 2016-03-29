@@ -8,7 +8,7 @@
     ],
 
     "require": {
-        "nikic/php-parser": "^2.0"
+        "nikic/php-parser": "@stable",
         "beberlei/assert": "@stable",
         "andrewsville/php-token-reflection": "@stable",
         "symfony/finder": "~2.4@stable",

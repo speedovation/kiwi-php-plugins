@@ -12,7 +12,7 @@ use KiWi\DependencyInjection\Application;
 //"classmap": ["syntaxchecker/command", "syntaxchecker"],
 //"speedovation/php-token-reflection" : "~1.4.0",
 
-class GreetCommand extends Command
+class SyntaxCheckerCommand extends Command
 {
     /**
      * @var Application

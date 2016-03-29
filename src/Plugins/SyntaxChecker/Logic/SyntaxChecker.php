@@ -1,24 +1,36 @@
 <?php
 
+namespace KiWi\Plugins\SyntaxChecker\Logic;
+
 use PhpParser\Error;
 use PhpParser\ParserFactory;
 
-
-function checkSyntaxPhp($code,$filename)
+class SyntaxChecker
 {
-
-    $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
     
-    try 
+    protected $app;
+    
+    public function __construct(Application $app)
     {
-        //print $code. "  \n\n";
-        $stmts = $parser->parse($code);
-        // $stmts is an array of statement nodes
-        return "";
-    } 
-    catch (PhpParser\Error $e) 
+        $this->app = $app;
+    }
+    
+    
+    function checkSyntaxPhp($code,$filename)
     {
         
+        $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+        
+        try
+        {
+            //print $code. "  \n\n";
+            $stmts = $parser->parse($code);
+            // $stmts is an array of statement nodes
+            return "";
+        }
+        catch (PhpParser\Error $e)
+        {
+            
         /*$errors = $parser->getErrors();
 
         foreach ($errors as $error) 
@@ -36,9 +48,9 @@ function checkSyntaxPhp($code,$filename)
             }
         
             
-        }*/
-
-
+            }*/
+            
+            
         /*if( $e->hasColumnInfo() ) 
         {
             echo $e->getRawMessage() . 
@@ -46,14 +58,16 @@ function checkSyntaxPhp($code,$filename)
                 ':' . $e->getStartColumn($code) . 
                 ' to ' . $e->getEndLine() . 
                 ':' . $e->getEndColumn($code);
-        }*/
+            }*/
+            
+            return $e;
+            
+            
+            return "Parse Error: ". $e->getMessage().
+            " - S: ". $e->getStartLine().
+            " - E: ". $e->getEndLine();
+        }
         
-        return $e;
-        
-        
-        return "Parse Error: ". $e->getMessage(). 
-                " - S: ". $e->getStartLine().
-                " - E: ". $e->getEndLine();
     }
-
+    
 }

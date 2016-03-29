@@ -30,9 +30,8 @@ class SyntaxChecker
             echo "No errors found";
             return "";
         }
-        catch (PhpParser\Error $e)
+        catch (\PhpParser\Error $e)
         {
-            
         /*$errors = $parser->getErrors();
 
         foreach ($errors as $error) 
@@ -65,8 +64,11 @@ class SyntaxChecker
             
             //CALL setmarkers here
             
-            
-            
+            echo "1";
+            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  $e->getStartLine() - 2 ,
+                'end'  => $e->getEndLine() - 2,
+                'file_name' => $filename
+                ));
             
             
             echo "Parse Error: ". $e->getMessage().

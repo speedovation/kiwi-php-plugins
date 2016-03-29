@@ -177,7 +177,7 @@ SIGNATURE;
         {
             if ($fileinfo->isFile() )
             {
-                echo "\n\nProvider: ". $fileinfo->getFilename() . "\n\n";
+                //echo "\n\nProvider: ". $fileinfo->getFilename() . "\n\n";
                 
                 $class = $fileinfo->getBasename('.php');
                 
@@ -204,11 +204,11 @@ SIGNATURE;
                 //We are inside plgin dir
                 $p = PLUGINSPATH."/".$fileinfo->getFilename()."/Providers/";
                 
-                echo "\n\nPP:". $p . PHP_EOL;
+                //echo "\n\nPP:". $p . PHP_EOL;
                 
                 if(!file_exists($p))
                 {
-                    echo "No providers found in $p";
+                    echo "\nNo providers found in $p";
                     continue;
                 }
                 

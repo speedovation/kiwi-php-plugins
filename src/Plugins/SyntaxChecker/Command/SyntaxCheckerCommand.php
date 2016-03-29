@@ -60,7 +60,7 @@ class SyntaxCheckerCommand extends Command
     {
         
         //Testing
-        echo "\n\n".$this->app['api']->hello();
+        echo "\n\n"; //$this->app['api']->hello();
 
         $name = $input->getArgument('name');
         if ($name) 

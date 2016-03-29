@@ -1,5 +1,5 @@
 <?php
-
+/*
 require __DIR__."/../vendor/autoload.php";
 
 include "parserPhp.php";
@@ -78,3 +78,4 @@ function checkSyntax($json)
     
 }
 
+*/

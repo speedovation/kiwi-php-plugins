@@ -8,7 +8,7 @@
     "actions": [
         {
             "name": "checkPhpSyntaxManager",
-            "title": "Check Php Syntax",
+            "title": "Php Syntax Checker",
             "parentMenu": "menuPhp",
             "shortcutKeys": "",
             "click_event": {
@@ -32,13 +32,9 @@
             "after_failure_methods": ""
         }
     },
-    "files": {
-        "php": [
-            "interface"
-        ]
-    },
+    
     "icons": {
         "128": "jsonlint-logo.png"
     },
-    "license": "Apache"
+    "license": "Apache License 2.0"
 }

@@ -208,7 +208,7 @@ SIGNATURE;
                 
                 if(!file_exists($p))
                 {
-                    echo "\nNo providers found in $p";
+                    //echo "\nNo providers found in $p";
                     continue;
                 }
                 

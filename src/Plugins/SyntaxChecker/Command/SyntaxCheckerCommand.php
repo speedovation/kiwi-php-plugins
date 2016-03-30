@@ -64,17 +64,17 @@ class SyntaxCheckerCommand extends Command
     {
         
         //Testing
-        echo "\n\n"; //$this->app['api']->hello();
+        //echo "\n\n"; //$this->app['api']->hello();
 
         //$name = $input->getArgument('name');
         $data = $input->getArgument('data');
         $port = $input->getArgument('port');
         
-        $text = "Data: ".$data . " Port: ".$port;
+        //$text = "Data: ".$data . " Port: ".$port;
         
         //$this->app['api']->decode($data);
         
-        $this->app['SyntaxChecker']->checkSyntax($data);
+        $text = $this->app['SyntaxChecker']->checkSyntax($data);
         
         /*if ($name) 
         {
@@ -90,6 +90,7 @@ class SyntaxCheckerCommand extends Command
             $text = strtoupper($text);
         }*/
 
-        $output->writeln($text);
+        //$output->writeln($text);
+        $output->write($text);
     }
 }

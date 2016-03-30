@@ -83,7 +83,7 @@ class ConsoleApplication extends SymfonyConsoleApplication
                 
                 if(!file_exists($p))
                 {
-                    echo "\nNo Command found in $p";
+                    //echo "\nNo Command found in $p";
                     continue;
                 }
                 

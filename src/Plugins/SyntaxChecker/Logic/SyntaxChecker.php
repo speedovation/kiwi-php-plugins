@@ -27,8 +27,14 @@ class SyntaxChecker
             //print $code. "  \n\n";
             $stmts = $parser->parse($code);
             // $stmts is an array of statement nodes
-            echo "No errors found";
-            return "";
+            
+            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  -1 ,
+                'end'  => -1,
+                'file_name' => $filename
+                ));
+            
+            return "No errors found";
+            //return "";
         }
         catch (\PhpParser\Error $e)
         {
@@ -64,18 +70,17 @@ class SyntaxChecker
             
             //CALL setmarkers here
             
-            echo "1";
-            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  $e->getStartLine() - 2 ,
-                'end'  => $e->getEndLine() - 2,
+            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  $e->getStartLine() - 1 ,
+                'end'  => $e->getEndLine() - 1,
                 'file_name' => $filename
                 ));
             
             
-            echo "Parse Error: ". $e->getMessage().
-            " - S: ". $e->getStartLine().
-            " - E: ". $e->getEndLine();
+            return "Parse Error: ". $e->getMessage().
+                        " - S: ". $e->getStartLine().
+                        " - E: ". $e->getEndLine();
 
-            return $e;
+            //return $e;
         }
         
     }
@@ -85,8 +90,9 @@ class SyntaxChecker
         
         $v = $this->app['api']->decode($json);
         
-        print_r($v);
-        echo "\n\n";
+        //print_r($v);
+        //echo "\n\n";
+        
                 
         $request = $this->app['api']->call_kiwi('text',array('file_name'=> $v->file_path ));
         
@@ -97,10 +103,12 @@ class SyntaxChecker
             
             $code = $request->result;
             
-            $this->checkSyntaxPhp($code,$v->file_path);
+            return $this->checkSyntaxPhp($code,$v->file_path);
             
             
         }
+        
+        return "Api request failed";
         
         //$connection = \Tivoka\Client::connect(array('host' => '127.0.0.1', 'port' => 9040));
         

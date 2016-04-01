@@ -15,7 +15,7 @@ class Api
     
     function decode($json)
     {
-        $json = str_replace("'","",$json);
+        //$json = str_replace("'","",$json);
         $json = str_replace("\\","",$json);
         return json_decode($json);
     }

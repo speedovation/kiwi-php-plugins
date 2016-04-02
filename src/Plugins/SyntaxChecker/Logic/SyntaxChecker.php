@@ -28,10 +28,14 @@ class SyntaxChecker
             $stmts = $parser->parse($code);
             // $stmts is an array of statement nodes
             
-            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  -1 ,
-                'end'  => -1,
-                'file_name' => $filename
-                ));
+            //$request = $this->app['api']->call_kiwi('set_markers',[]);
+            
+             $arr = array( "method" => "set_markers", 
+                          "params" =>    array()  );
+                        
+            //print_r($arr);            
+            
+            return json_encode($arr);
             
             return "No errors found";
             //return "";
@@ -67,13 +71,19 @@ class SyntaxChecker
                 ':' . $e->getEndColumn($code);
             }*/
             
-            
+            $line = $e->getStartLine() - 1;
             //CALL setmarkers here
             
-            $request = $this->app['api']->call_kiwi('set_markers',array('astart' =>  $e->getStartLine() - 1 ,
-                'end'  => $e->getEndLine() - 1,
-                'file_name' => $filename
-                ));
+            //$request = $this->app['api']->call_kiwi( 'set_markers', array( $line => $e->getMessage() ));
+            
+            
+            $arr = array( "method" => "set_markers", 
+                          "params" =>  array(  array( $line => $e->getMessage() ) )   );
+                        
+            //print_r($arr);            
+            
+            return json_encode($arr);
+
             
             
             return "Parse Error: ". $e->getMessage().

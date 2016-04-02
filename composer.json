@@ -2,7 +2,9 @@
     "name": "speedovation/kiwi-php-plugins",
     "type": "application",
     "description": "KiWi PHP Plugins, Using sockets PHP based plugins",
-    "keywords": ["phpdoc"],
+    "keywords": [
+        "phpdoc"
+    ],
     "homepage": "http://kineticwing.com",
     "license": "Apache 2.0 License",
     "authors": [
@@ -20,20 +22,17 @@
         "symfony/finder": "~2.1",
         "symfony/filesystem": "~2.1",
         "symfony/yaml": "~2.1",
-        "symfony/process": "~2.1",        
+        "symfony/process": "~2.1",
         "clue/socket-raw": "~1.1",
         "phpdocumentor/reflection-docblock": "~2.0",
-        "tivoka/tivoka":"*",
+        "tivoka/tivoka": "*",
         "graze/guzzle-jsonrpc": "~3.0",
         "qafoolabs/php-refactoring-browser": "^0.1.0",
         "nikic/php-parser": "^2.0"
     },
     "autoload": {
-        
         "psr-4": {
             "KiWi\\": "src/"
         }
-
     }
-    
 }

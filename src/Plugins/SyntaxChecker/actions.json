@@ -32,7 +32,6 @@
             "after_failure_methods": ""
         }
     },
-    
     "icons": {
         "128": "jsonlint-logo.png"
     },

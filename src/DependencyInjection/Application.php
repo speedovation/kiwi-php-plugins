@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 use KiWi\Providers\ApiServiceProvider;
 //use Easybook\Util\Toolkit;
 
-define('PLUGINSPATH', realpath(__DIR__.'/../Plugins/') ); 
+define('PLUGINSPATH', realpath(__DIR__.'/../Plugins/') );
 
 class Application extends Container
 {
@@ -28,47 +28,50 @@ class Application extends Container
         $this['app.charset'] = 'UTF-8';
         $this['app.name'] = 'easybook';
         $this['app.signature'] = <<<SIGNATURE
- ___  ____    _  ____      ____  _   
-|_  ||_  _|  (_)|_  _|    |_  _|(_)  
-  | |_/ /    __   \ \  /\  / /  __   
-  |  __'.   [  |   \ \/  \/ /  [  |  
- _| |  \ \_  | |    \  /\  /    | |  
-|____||____|[___]    \/  \/    [___] 
 
+ ___ ____ _ ____ ____ _ ________  
+|_  ||_  _|  (_)|_  _|    |_  _|(_)
+  | |_/ /    __   \ \  /\  / /  __
+  |  __'.   [  |   \ \/  \/ /  [  |
+ _| |  \ \_  | |    \  /\  /    | |
+|____||____|[___]    \/  \/    [___]
 
-KKKKKKKKK    KKKKKKK  iiii WWWWWWWW                           WWWWWWWW iiii  
-K:::::::K    K:::::K i::::iW::::::W                           W::::::Wi::::i 
-K:::::::K    K:::::K  iiii W::::::W                           W::::::W iiii  
-K:::::::K   K::::::K       W::::::W                           W::::::W       
-KK::::::K  K:::::KKKiiiiiii W:::::W           WWWWW           W:::::Wiiiiiii 
-  K:::::K K:::::K   i:::::i  W:::::W         W:::::W         W:::::W i:::::i 
-  K::::::K:::::K     i::::i   W:::::W       W:::::::W       W:::::W   i::::i 
-  K:::::::::::K      i::::i    W:::::W     W:::::::::W     W:::::W    i::::i 
-  K:::::::::::K      i::::i     W:::::W   W:::::W:::::W   W:::::W     i::::i 
-  K::::::K:::::K     i::::i      W:::::W W:::::W W:::::W W:::::W      i::::i 
-  K:::::K K:::::K    i::::i       W:::::W:::::W   W:::::W:::::W       i::::i 
-KK::::::K  K:::::KKK i::::i        W:::::::::W     W:::::::::W        i::::i 
+SIGNATURE;
+
+/*
+KKKKKKKKK    KKKKKKK  iiii WWWWWWWW                           WWWWWWWW iiii
+K:::::::K    K:::::K i::::iW::::::W                           W::::::Wi::::i
+K:::::::K    K:::::K  iiii W::::::W                           W::::::W iiii
+K:::::::K   K::::::K       W::::::W                           W::::::W
+KK::::::K  K:::::KKKiiiiiii W:::::W           WWWWW           W:::::Wiiiiiii
+  K:::::K K:::::K   i:::::i  W:::::W         W:::::W         W:::::W i:::::i
+  K::::::K:::::K     i::::i   W:::::W       W:::::::W       W:::::W   i::::i
+  K:::::::::::K      i::::i    W:::::W     W:::::::::W     W:::::W    i::::i
+  K:::::::::::K      i::::i     W:::::W   W:::::W:::::W   W:::::W     i::::i
+  K::::::K:::::K     i::::i      W:::::W W:::::W W:::::W W:::::W      i::::i
+  K:::::K K:::::K    i::::i       W:::::W:::::W   W:::::W:::::W       i::::i
+KK::::::K  K:::::KKK i::::i        W:::::::::W     W:::::::::W        i::::i
 K:::::::K   K::::::Ki::::::i        W:::::::W       W:::::::W        i::::::i
 K:::::::K    K:::::Ki::::::i         W:::::W         W:::::W         i::::::i
 K:::::::K    K:::::Ki::::::i          W:::W           W:::W          i::::::i
 KKKKKKKKK    KKKKKKKiiiiiiii           WWW             WWW           iiiiiiii
 
-'||  //'      '||      ||`      
- || //    ''   ||      ||   ''  
- ||<<     ||   ||  /\  ||   ||  
- || \\    ||    \\//\\//    ||  
-.||  \\. .||.    \/  \/    .||. 
+'||  //'      '||      ||`
+ || //    ''   ||      ||   ''
+ ||<<     ||   ||  /\  ||   ||
+ || \\    ||    \\//\\//    ||
+.||  \\. .||.    \/  \/    .||.
 
-  _  __  _  __          __  _ 
+  _  __  _  __          __  _
  | |/ / (_) \ \        / / (_)
- | ' /   _   \ \  /\  / /   _ 
+ | ' /   _   \ \  /\  / /   _
  |  <   | |   \ \/  \/ /   | |
  | . \  | |    \  /\  /    | |
  |_|\_\ |_|     \/  \/     |_|
-                              
-                                                                                      
-                                    
-SIGNATURE;
+*/
+
+
+//SIGNATURE;
 
         // -- global directories location -------------------------------------
         $this['app.dir.base'] = realpath(__DIR__.'/../../../');
@@ -86,7 +89,7 @@ SIGNATURE;
         $this['console.dialog'] = null;
 
 
-        
+
         // maintained for backwards compatibility
         $this['publishing.id'] = function () {
             trigger_error('The "publishing.id" option is deprecated since version 5.0 and will be removed in the future. Use "publishing.edition.id" instead.', E_USER_DEPRECATED);
@@ -107,21 +110,21 @@ SIGNATURE;
             return new Filesystem();
         });
 
-       
+
 
         $this->register(new ApiServiceProvider());
-        
+
         $this->loadPlugins();
-       
-  
+
+
 /*    $providers = (array) require __DIR__.'/providers.php';
     array_walk($providers, function($class, $i, $app) {
       class_exists($class) AND $app->register(new $class);
     }, $app);*/
-  
-        
 
-        
+
+
+
 
         // -- titles ----------------------------------------------------------
         $this['titles'] = function () use ($app) {
@@ -163,65 +166,65 @@ SIGNATURE;
 
         return $array;
     }
-    
+
     public function loadProviders($path)
     {
-        
+
         //$providers = (array) require __DIR__.'/providers.php';
         //array_walk($providers, function($class, $i, $app) {
         //  class_exists($class) AND $app->register(new $class);
         //}, $app);
-        
+
         $iterator = new \DirectoryIterator(PLUGINSPATH."/$path/Providers/" );
-        foreach ($iterator as $fileinfo) 
+        foreach ($iterator as $fileinfo)
         {
             if ($fileinfo->isFile() )
             {
                 //echo "\n\nProvider: ". $fileinfo->getFilename() . "\n\n";
-                
+
                 $class = $fileinfo->getBasename('.php');
-                
+
                 $class1 = "\KiWi\Plugins\\".$path."\\Providers\\".$class;
-                
-                $this->register(new $class1 ) ; 
-            }   
+
+                $this->register(new $class1 ) ;
+            }
         }
-  
+
     }
-        
+
     public function loadPlugins()
     {
-         
+
         //
         $iterator = new \DirectoryIterator( PLUGINSPATH );
-        foreach ($iterator as $fileinfo) 
+        foreach ($iterator as $fileinfo)
         {
-            if ($fileinfo->isDir() && !$fileinfo->isDot()) 
+            if ($fileinfo->isDir() && !$fileinfo->isDot())
             {
                 //echo $fileinfo->getFilename() . "\n";
-                
-                
+
+
                 //We are inside plgin dir
                 $p = PLUGINSPATH."/".$fileinfo->getFilename()."/Providers/";
-                
+
                 //echo "\n\nPP:". $p . PHP_EOL;
-                
+
                 if(!file_exists($p))
                 {
                     //echo "\nNo providers found in $p";
                     continue;
                 }
-                
+
                 $this->loadProviders( $fileinfo->getFilename() );
-                
-                
+
+
                 // recursion goes here.
             }
         }
     }
 
-   
 
-   
-    
+
+
+
 }

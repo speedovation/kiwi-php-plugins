@@ -1,20 +1,9 @@
 %s
 
-<info>KiWi</info> is the <error>easiest</error> and <warn>fastest</warn> tool to generate,
-technical documentation, books, manuals and websites.
+<question>KiWi</question> is the <comment>easiest</comment> and <comment>fastest</comment> WEB IDE
 
-To create a new book, use the <info>new</info> command:
+To run command , use the <comment>below</comment> command:
 
-  <comment>./book new "The Origin of Species"</comment>
+  <info>php application.php commandName JsonData</info>
 
-To publish a book, use the <info>publish</info> command:
-
-  <comment>./book publish the-origin-of-species print</comment>
-
-To display the installed version, use the <info>version</info> command:
-
-  <comment>./book version</comment>
-
-Checkout the full documentation for each command with the <info>help</info> command:
-
-  <comment>./book help new</comment>
+See src/Plugins directory for live and working examples.

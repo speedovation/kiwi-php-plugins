@@ -31,7 +31,7 @@ class SyntaxChecker
             //$request = $this->app['api']->call_kiwi('set_markers',[]);
             
              $arr = array( "method" => "set_markers", 
-                          "params" =>    array()  );
+                          "params" =>    array("")  );
                         
             //print_r($arr);            
             

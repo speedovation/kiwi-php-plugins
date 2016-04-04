@@ -2,7 +2,7 @@
 <?php
 // application.php
 
-if (!file_exists(__DIR__.'/vendor/autoload.php')) 
+if (!file_exists(__DIR__.'/../vendor/autoload.php')) 
 {
     throw new \RuntimeException(
         "\n"
@@ -17,7 +17,7 @@ if (!file_exists(__DIR__.'/vendor/autoload.php'))
     );
 }
 
-require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 use KiWi\DependencyInjection\Application;
 use KiWi\Console\ConsoleApplication;

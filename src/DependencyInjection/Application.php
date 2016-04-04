@@ -15,7 +15,7 @@ define('PLUGINSPATH', realpath(__DIR__.'/../Plugins/') );
 
 class Application extends Container
 {
-    const VERSION = '5.0-DEV';
+    const VERSION = '2.1.0 Alpha2';
 
     public function __construct()
     {

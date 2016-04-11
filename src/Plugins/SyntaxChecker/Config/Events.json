@@ -2,6 +2,9 @@
     "events": [
         {
             "event_name": "on_text_changed",
+            "_comment" : "Possible values path, pattern, type and project",
+            "event_type" : "type",
+            "file_type": "Php File",
             "command_name": "lintPhp"
         }
     ]

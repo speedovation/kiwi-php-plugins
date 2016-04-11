@@ -3,7 +3,7 @@
         {
             "name": "lintPhp",
             "keymap": "Ctrl+Shift+h",
-            "file_type": "Php File",
+            
             "trigger_event": {
                 "fullcommand": "php application.php checkSyntax",
                 "command": [

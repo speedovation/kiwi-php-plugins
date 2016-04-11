@@ -1,0 +1,12 @@
+{
+    "menu": {
+        "parent_label": "Flavours",
+        "label": "Php Syntax Linter"
+    },
+    "submenu": [
+        {
+            "label": "Php Syntax Checker LINT",
+            "command_name": "lintPhp"
+        }
+    ]
+}

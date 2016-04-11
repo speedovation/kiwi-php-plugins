@@ -1,0 +1,25 @@
+{
+    "commands": [
+        {
+            "name": "lintPhp",
+            "keymap": "Ctrl+Shift+h",
+            "file_type": "Php File",
+            "trigger_event": {
+                "fullcommand": "php application.php checkSyntax",
+                "command": [
+                    "SyntaxChecker",
+                    "checkSyntax"
+                ],
+                "available_api_methods": [
+                    "selected_text",
+                    "file_path"
+                ],
+                "after_success_run_commands": [],
+                "after_failure_run_commands": []
+            },
+            "icons": {
+                "normal_state": "nor"
+            }
+        }
+    ]
+}

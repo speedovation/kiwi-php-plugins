@@ -1,0 +1,8 @@
+{
+    "events": [
+        {
+            "event_name": "on_text_changed",
+            "command_name": "lintPhp"
+        }
+    ]
+}

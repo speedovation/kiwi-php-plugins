@@ -5,7 +5,6 @@
     },
     "submenu": [
         {
-            "label": "Php Syntax Checker LINT",
             "command_name": "lintPhp"
         }
     ]

@@ -2,6 +2,7 @@
     "commands": [
         {
             "name": "lintPhp",
+            "label": "Php Syntax Checker",
             "keymap": "Ctrl+Shift+h",
             
             "trigger_event": {

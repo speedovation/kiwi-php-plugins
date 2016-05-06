@@ -1,0 +1,10 @@
+{
+    "events": [
+        {
+            "event_name": "on_end_loading_project",
+            "event_type": "project",
+            "file_type": "Php File",
+            "command_name": "parsePhpProject"
+        }
+    ]
+}

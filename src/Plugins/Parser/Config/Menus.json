@@ -1,0 +1,14 @@
+{
+    "menu": {
+        "parent_label": "Php",
+        "label": "Php"
+    },
+    "submenu": [
+        {
+            "command_name": "parsePhp"
+        },
+        {
+            "command_name": "parsePhpProject"
+        }
+    ]
+}

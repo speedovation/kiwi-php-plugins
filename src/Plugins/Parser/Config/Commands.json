@@ -1,0 +1,39 @@
+{
+    "commands": [
+        {
+            "name": "parsePhp",
+            "label": "Parse Php",
+            "keymap": "",
+            "trigger_event": {
+
+                "fullcommand": "php parser/interface.php parsePhp",
+                "command": [],
+                "available_api_methods": [
+                    "selected_text",
+                    "file_path"
+                ],
+                "after_success_run_commands": [],
+                "after_failure_run_commands": []
+            },
+            "icons": {}
+        },
+        {
+            "name": "parsePhpProject",
+            "label": "Parse Project",
+            "keymap": "Ctrl+E",
+            "trigger_event": {
+                "fullcommand": "php parser/interface.php parsePhpProject",
+                "command": [],
+                "available_api_methods": [
+                    "project_path",
+                    "input_dialog"
+                ],
+                "after_success_run_commands": [
+                    "refresh_sense_data"
+                ],
+                "after_failure_run_commands": []
+            },
+            "icons": {}
+        }
+    ]
+}

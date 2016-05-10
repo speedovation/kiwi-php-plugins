@@ -6,10 +6,10 @@
             "keymap": "",
             "trigger_event": {
 
-                "fullcommand": "php parser/interface.php parsePhp",
+                "fullcommand": "php application.php parsePhpFile",
                 "command": [],
                 "available_api_methods": [
-                    "selected_text",
+                  
                     "file_path"
                 ],
                 "after_success_run_commands": [],
@@ -22,11 +22,10 @@
             "label": "Parse Project",
             "keymap": "Ctrl+E",
             "trigger_event": {
-                "fullcommand": "php parser/interface.php parsePhpProject",
+                "fullcommand": "php application.php parsePhpProject",
                 "command": [],
                 "available_api_methods": [
-                    "project_path",
-                    "input_dialog"
+                    "project_path"
                 ],
                 "after_success_run_commands": [
                     "refresh_sense_data"

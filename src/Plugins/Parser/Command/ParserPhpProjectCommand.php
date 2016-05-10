@@ -1,6 +1,6 @@
 <?php
 
-namespace KiWi\Plugins\SyntaxChecker\Command;
+namespace KiWi\Plugins\Parser\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,7 +12,7 @@ use KiWi\DependencyInjection\Application;
 //"classmap": ["syntaxchecker/command", "syntaxchecker"],
 //"speedovation/php-token-reflection" : "~1.4.0",
 
-class SyntaxCheckerCommand extends Command
+class ParserPhpProjectCommand extends Command
 {
     /**
      * @var Application
@@ -42,8 +42,8 @@ class SyntaxCheckerCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('checkSyntax')
-            ->setDescription('Check Syntax of PHP file')
+            ->setName('parsePhpProject')
+            ->setDescription('Parser PHP Project')
            
             ->addArgument(
                 'data',
@@ -70,14 +70,17 @@ class SyntaxCheckerCommand extends Command
         $data = $input->getArgument('data');
         $port = $input->getArgument('port');
         
-        
-        
-        
         //$text = "Data: ".$data . " Port: ".$port;
         
         //$this->app['api']->decode($data);
         
-        $text = $this->app['KPhpParser']->parseFile($data);
+        
+        $v = $this->app['api']->decode($data);
+        
+        
+        $text = $this->app['PhpParser']->parseDir($v->project_path);
+        //print_r($v);
+        //exit();
         
         /*if ($name) 
         {

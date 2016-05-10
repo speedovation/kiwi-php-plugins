@@ -1,6 +1,8 @@
 <?php
 
-require __DIR__."/../vendor/autoload.php";
+namespace KiWi\Plugins\Parser\Logic;
+
+use KiWi\DependencyInjection\Application;
 
 use PhpParser\Error;
 use PhpParser\ParserFactory;
@@ -333,18 +335,18 @@ class MyPhpParser
 
     private function initInstances()
     {
-        $lexer = new PhpParser\Lexer ( array(
+        $lexer = new \PhpParser\Lexer ( array(
         'usedAttributes' => array(
         'comments', 'startLine', 'endLine', 'startTokenPos', 'endTokenPos'
         )
         ) ) ;
 
-        $this->parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::PREFER_PHP5, $lexer);
+        $this->parser = (new \PhpParser\ParserFactory)->create(\PhpParser\ParserFactory::PREFER_PHP5, $lexer);
 
 
         $visitor = new MyParserNodeVisitor($this->filename);
 
-        $this->traverser = new PhpParser\NodeTraverser();
+        $this->traverser = new \PhpParser\NodeTraverser();
         $this->traverser->addVisitor($visitor);
     }
 
@@ -359,7 +361,7 @@ class MyPhpParser
             $stmts = $this->traverser->traverse($stmts);
 
         }
-        catch (PhpParser\Error $e)
+        catch (\PhpParser\Error $e)
         {
             echo 'Parse Error: ', $e->getMessage();
         }
@@ -370,12 +372,14 @@ class MyPhpParser
 }
 
 
-class KPhpParser
+class PhpParser
 {
 
-    public function __construct()
+    protected $app;
+    
+    public function __construct(Application $app)
     {
-
+        $this->app = $app;
     }
 
     public function parseFileP($filename)
@@ -401,10 +405,10 @@ class KPhpParser
         define('PROJECTPATH', $path . DIRECTORY_SEPARATOR);
 
         //Get all files recursively under given $path
-        $iter = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS),
-        RecursiveIteratorIterator::SELF_FIRST,
-        RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
+        $iter = new \RecursiveIteratorIterator(
+        new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS),
+        \RecursiveIteratorIterator::SELF_FIRST,
+        \RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
         );
 
         //Convert into Array
